@@ -65,28 +65,11 @@
         object-fit: cover;
       }
       body .swiper-slide{
-        background-color: rgb(129, 49, 55);
+        background-color: #FEDF62;
+        transition: all .5s ease-in-out;
         
       }
-      
-      .a {
-        background-color: rgb(204, 38, 52);
-
-      }
-      .b {
-        background-color: rgb(204, 38, 52);
-        -webkit-transition: background-color .4s ease-out;
-        -moz-transition: background-color .4s ease-out;
-        -o-transition: background-color .4s ease-out;
-        transition: background-color .4s ease-out;
-      }
-      .c {
-        background-color: rgb(204, 38, 52);
-        -webkit-transition: background-color .4s ease-out;
-        -moz-transition: background-color .4s ease-out;
-        -o-transition: background-color .4s ease-out;
-        transition: background-color .4s ease-out;
-      }
+   
     </style>
   </head>
 
@@ -94,9 +77,9 @@
     <!-- Swiper -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide a">Slide 1</div>
-        <div class="swiper-slide b">Slide 2</div>
-        <div class="swiper-slide c">Slide 3</div>
+        <section id="1" data-color="#FEDF62" class="swiper-slide">Slide 1</section>
+        <section id="2" data-color="#EEBDCD" class="swiper-slide">Slide 2</section>
+        <section id="3" data-color="#CC2634" class="swiper-slide">Slide 3</section>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -108,7 +91,7 @@
     <script>
       var swiper = new Swiper(".mySwiper", {
         direction: "vertical",
-        loop: true,
+        // loop: true,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -117,16 +100,73 @@
     </script>
 
     <script>
-        window.addEventListener('load',()=>{
+      let test = document.querySelector('.swiper-slide')
+      let color = ['#FEDF62','#EEBDCD','#CC2634']
+      let cpt = 0
+      swiper.on('slideNextTransitionStart',function(e) {
+          cpt ++
+          console.log('slide changed');
+          // console.log(e.el.children[0].children[0])
+          e.el.children[0].children[0].style.backgroundColor = color[cpt]
+          e.el.children[0].children[0].style.transition = 'all .5s ease-in-out'
+          e.el.children[0].children[1].style.backgroundColor = color[cpt]
+          e.el.children[0].children[1].style.transition = 'all .5s ease-in-out'
+          e.el.children[0].children[2].style.backgroundColor = color[cpt]
+          e.el.children[0].children[2].style.transition = 'all .5s ease-in-out'
+          if (cpt >= 2 ){
+            cpt = 2
+          }
+          console.log(cpt)
+      })
+      swiper.on('slidePrevTransitionStart',function(e) {
+          cpt --
+          console.log('slide changed');
+          // console.log(e.el.children[0].children[0])
+          e.el.children[0].children[0].style.backgroundColor = color[cpt]
+          e.el.children[0].children[0].style.transition = 'all .5s ease-in-out'
+          e.el.children[0].children[1].style.backgroundColor = color[cpt]
+          e.el.children[0].children[1].style.transition = 'all .5s ease-in-out'
+          e.el.children[0].children[2].style.backgroundColor = color[cpt]
+          e.el.children[0].children[2].style.transition = 'all .5s ease-in-out'
+          if (cpt <= 0 ){
+            cpt = 0
+          }
+          console.log(cpt)
 
-        let swiper = document.querySelector('.swiper')
-        let a = document.querySelector('.a')
-        let b = document.querySelector('.b')
-        let c = document.querySelector('.c')
-        let swiper_slide_active = document.querySelector('.swiper-slide-active')
+      })
+    </script>
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      let updateFns = gsap.utils.toArray(".section").map(function (elem) {
+        var color = elem.getAttribute("data-color");
+    
+        let trigger = ScrollTrigger.create({
+          trigger: elem,
+          start: "top 50%",
+          end: "bottom 50%",
+          markers: false,
+          onToggle() {
+            gsap.to("main", {
+              backgroundColor: color,
+              duration: 1,
+            });
+          },
+        });
+    
+        return () => {
+          color = elem.getAttribute("data-color");
+          if (trigger.isActive) {
+            gsap.killTweensOf("main");
+            gsap.set("main", {
+              backgroundColor: color,
+            });
+          }
+        };
       });
-
-        
+    
+     
     </script>
   </body>
 </html>
