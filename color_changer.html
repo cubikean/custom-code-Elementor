@@ -135,38 +135,6 @@
 
       })
     </script>
-    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-      let updateFns = gsap.utils.toArray(".section").map(function (elem) {
-        var color = elem.getAttribute("data-color");
-    
-        let trigger = ScrollTrigger.create({
-          trigger: elem,
-          start: "top 50%",
-          end: "bottom 50%",
-          markers: false,
-          onToggle() {
-            gsap.to("main", {
-              backgroundColor: color,
-              duration: 1,
-            });
-          },
-        });
-    
-        return () => {
-          color = elem.getAttribute("data-color");
-          if (trigger.isActive) {
-            gsap.killTweensOf("main");
-            gsap.set("main", {
-              backgroundColor: color,
-            });
-          }
-        };
-      });
-    
-     
-    </script>
+   
   </body>
 </html>
