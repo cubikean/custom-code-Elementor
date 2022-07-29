@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="rgb(24, 97, 54)" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Sentinel SSm A, Sentinel SSm B, system-ui, -apple-system,
+          BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
+          Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        /* background: rgb(24, 97, 54); */
+      }
+      ::-webkit-scrollbar{
+        display: none;
+      }
+      .scroller {
+        scroll-behavior: smooth;
+        position: relative;
+        width: 40%;
+        margin: 0 auto;
+        height: 600px;
+        scroll-snap-type: y mandatory;
+
+        overflow-y: scroll;
+        cursor: grab;
+      }
+      .child {
+        height: 100%;
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroller">
+      <div class="child">coucou</div>
+      <div class="child">coucou</div>
+      <div class="child">coucou</div>
+    </div>
+
+    <script>
+      const motion = window.matchMedia(
+        "(prefers-reduced-motion: no-preference)"
+      );
+
+      // Check if the media query matches or is not available.
+      if (motion.matches) {
+        let lastKnownScrollPosition = 0;
+        let ticking = false;
+
+        function changeColor(scrollPos) {
+          let scroller = document.querySelector(".scroller");
+          const saturation = scrollPos / (scroller.scrollHeight / 255);
+          const color = `rgb(24 45 ${saturation})`;
+          scroller.style.background = color;
+          //   document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
+        }
+        let scroller = document.querySelector(".scroller");
+
+        scroller.addEventListener("scroll", function (e) {
+          let scroller = document.querySelector(".scroller");
+
+          lastKnownScrollPosition = scroller.scrollTop;
+          console.log(lastKnownScrollPosition);
+
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              changeColor(lastKnownScrollPosition);
+              ticking = false;
+            });
+
+            ticking = true;
+          }
+        });
+      }
+      document
+        .querySelector(".scroller")
+        .addEventListener("wheel", preventScroll, { passive: false });
+
+      function preventScroll(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        return false;
+      }
+
+      const child = document.querySelectorAll(".child");
+      const parent = document.querySelector(".scroller");
+
+      let startX;
+      let scrollTop;
+      let isDown;
+
+      parent.addEventListener("mousedown", (e) => mouseIsDown(e));
+      parent.addEventListener("mouseup", (e) => mouseUp(e));
+      parent.addEventListener("mouseleave", (e) => mouseLeave(e));
+      parent.addEventListener("mousemove", (e) => mouseMove(e));
+
+      function mouseIsDown(e) {
+        isDown = true;
+        startY = e.pageY - parent.offsetTop;
+        scrollTop = parent.scrollTop;
+      }
+      function mouseUp(e) {
+        isDown = false;
+      }
+      function mouseLeave(e) {
+        isDown = false;
+      }
+      function mouseMove(e) {
+        if (isDown) {
+          e.preventDefault();
+          //Move vertcally
+          const y = e.pageY - parent.offsetTop;
+          const walkY = (y - startY) * 2;
+          parent.scrollTop = scrollTop - walkY;
+        }
+      }
+    </script>
+  </body>
+</html>
