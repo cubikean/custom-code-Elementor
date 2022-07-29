@@ -23,7 +23,7 @@
         margin: 0 auto;
         height: 600px;
         scroll-snap-type: y mandatory;
-
+        background-color: rgb(254,223,98);
         overflow-y: scroll;
         cursor: grab;
       }
@@ -43,6 +43,14 @@
       <div class="child">coucou</div>
     </div>
 
+
+    <!-- 
+        color :
+        1er : rgb(254,223,98)
+        2e : rgb(238,189,205)
+        3e : rgb(204,38,52)
+     -->
+
     <script>
       const motion = window.matchMedia(
         "(prefers-reduced-motion: no-preference)"
@@ -55,8 +63,8 @@
 
         function changeColor(scrollPos) {
           let scroller = document.querySelector(".scroller");
-          const saturation = scrollPos / (scroller.scrollHeight / 255);
-          const color = `rgb(24 45 ${saturation})`;
+          const saturation = scrollPos / (scroller.scrollHeight / 500);
+          const color = `rgb(${255 - saturation} ${saturation} ${saturation})`;
           scroller.style.background = color;
           //   document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
         }
