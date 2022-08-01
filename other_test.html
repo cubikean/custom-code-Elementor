@@ -19,11 +19,12 @@
         display: none;
       }
       .scroller {
+        border-radius: 250px;
         scroll-behavior: smooth;
         position: relative;
-        width: 40%;
+        width: 400px;
         margin: 0 auto;
-        height: 600px;
+        height: 800px;
         scroll-snap-type: y mandatory;
         background-color: rgb(254,223,98);
         overflow-y: scroll;
@@ -36,6 +37,9 @@
         align-items: center;
         justify-content: center;
       }
+      .space{
+        height: 40vh;
+      }
     </style>
   </head>
   <body>
@@ -44,7 +48,8 @@
       <div class="child">coucou</div>
       <div class="child">coucou</div>
     </div>
-
+    <h2>coucou</h2>
+    <div class="space"></div>
 
     <!-- 
         color :
@@ -67,10 +72,30 @@
 
         function changeColor(scrollPos) {
           let scroller = document.querySelector(".scroller");
+          const posM = scrollPos / (scroller.scrollHeight / 300);
           console.log('scrollPos = ',scrollPos)
-          const saturation = scrollPos / (254 * 1);
-          const color = `rgb(${saturation} ${saturation} ${saturation})`;
-          scroller.style.background = color;
+          console.log('posM = ',posM)
+          let color = `rgba( ${254} ${223} ${98} ${0})`;
+
+          // const color = `rgba(${saturation} ${saturation} ${saturation} ${posM / 100})`;
+          // scroller.style.background = color;
+          if(scrollPos === 0){
+            console.log('in 00')
+            color = `rgba( ${254} ${223} ${98} ${posM / 100})`;
+            scroller.style.transition = ".4s ease-in-out";
+            scroller.style.background = color;
+          }
+          else if(scrollPos === 800){
+            console.log("in")
+            color = `rgba( ${238} ${189} ${205} ${posM / 100})`;
+            scroller.style.transition = ".4s ease-in-out";
+            scroller.style.background = color;
+          } else if(scrollPos === 1600){
+            console.log(" > 800")
+            color = `rgba( ${204} ${38} ${52} ${posM / 100})`;
+            scroller.style.transition = ".4s ease-in-out";
+            scroller.style.background = color;
+          }
           //   document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
         }
         let scroller = document.querySelector(".scroller");
@@ -130,9 +155,8 @@
           e.preventDefault();
           //Move vertcally
           const y = e.pageY - parent.offsetTop;
-          const walkY = (y - startY) * 2;
+          const walkY = (y - startY) * 3;
           parent.scrollTop = scrollTop - walkY;
-          console.log(walkY)
         }
       }
     </script>
