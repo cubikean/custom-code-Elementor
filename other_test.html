@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,6 +17,10 @@
       }
       ::-webkit-scrollbar {
         display: none;
+      }
+      .container{
+        width: 70%;
+        margin: 0 auto;
       }
       .scroller {
         border-radius: 250px;
@@ -39,7 +43,7 @@
         justify-content: center;
       }
       .space {
-        height: 40vh;
+        height: 100vh;
       }
       .image_container{
         display: flex;
@@ -75,30 +79,31 @@
   </head>
   <body>
     <div class="container">
-    <div class="scroller">
-      <div id="child_1" class="child"></div>
-      <div id="child_2" class="child"></div>
-      <div id="child_3" class="child"></div>
-    </div>
-    <div class="image_container" data-position="0">
-      <div class="image_container_single">
-        <img src="assets/images/sc_L.png" alt="">
-        <img src="assets/images/sc_R.png" alt="">
+
+      <div class="scroller">
+        <div id="child_1" class="child"></div>
+        <div id="child_2" class="child"></div>
+        <div id="child_3" class="child"></div>
       </div>
-      <div class="image_container_single">
-        <img src="assets/images/alpine.png" alt="">
+
+      <div class="image_container" data-position="0">
+        <div class="image_container_single">
+          <img src="assets/images/sc_L.png" alt="">
+          <img src="assets/images/sc_R.png" alt="">
+        </div>
+        <div class="image_container_single">
+          <img src="assets/images/alpine.png" alt="">
+        </div>
+        <div class="image_container_single">
+          <img src="assets/images/croix_rouge.png" alt="">
+          <img src="assets/images/croix_rouge_vector.png" alt="">
+        </div>
       </div>
-      <div class="image_container_single">
-        <img src="assets/images/croix_rouge.png" alt="">
-        <img src="assets/images/croix_rouge_vector.png" alt="">
-      </div>
-      
-    </div>
     
     </div>
     
     <h2>coucou</h2>
-    <div class="space"></div>
+    <div class="space">test</div>
 
     <!-- 
         color :
@@ -141,7 +146,7 @@
             console.log("in 00");
             // image_container.style.transform = "translate(0px, -800px)"
             // color = `rgb( ${254} ${223 * posM} ${98})`;
-            gsap.to(".scroller", {duration: .5,backgroundColor: "#FEDF62",ease: "none"});
+            gsap.to(".scroller", {duration: .4,backgroundColor: "#FEDF62",ease: "none"});
             
             // console.log('child_1 pos = ', child_1.getBoundingClientRect())
             // console.log('child_1_RectOffset =' ,child_1_RectOffset)
@@ -154,7 +159,7 @@
             console.log("in");
             // image_container.style.transform = "translate(0px, -1600px)"
             // color = `rgb( ${238} ${189 * posM} ${205})`;
-            gsap.to(".scroller", {duration: .5,backgroundColor: "#EEBDCD",ease: "none"});
+            gsap.to(".scroller", {duration: .4,backgroundColor: "#EEBDCD",ease: "none"});
             // console.log("color = ", color);
             // scroller.style.transition = ".4s ease-in-out";
             // scroller.style.backgroundColor = color;
@@ -165,7 +170,7 @@
             // color = `rgb( ${204} ${38 * posM} ${52})`;
             // console.log("color = ", color);
             // scroller.style.transition = ".4s ease-in-out";
-            gsap.to(".scroller", {duration: .5,backgroundColor: "#CC2634",ease: "none"});
+            gsap.to(".scroller", {duration: .4,backgroundColor: "#CC2634",ease: "none"});
             // scroller.style.backgroundColor = color;
           }
           //   document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
