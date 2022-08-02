@@ -34,6 +34,36 @@
         overflow-y: scroll;
         cursor: grab;
       }
+      .rect_anime{
+        height: 200px;
+        border-radius: 50%;
+        width: 300px;
+        z-index: -20;
+        top: 600px;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, 0%);
+        background-color: red;
+        position: absolute;
+        animation-name: rect_anime;
+      }
+      @keyframes rect_anime {
+        from{
+          top: 570px;
+          width: 280px;
+          height: 200px;
+        }
+        50%{
+          width: 500px;
+          height: 400px;
+        }
+        to{
+          top: 0px;
+          width: 300px;
+          height: 200px;
+        }
+        
+      }
       .child {
         height: 100%;
         scroll-snap-align: start;
@@ -74,7 +104,7 @@
         min-height: 400px;
         z-index: -6;
       }
-      
+
     </style>
   </head>
   <body>
@@ -85,6 +115,7 @@
         <div id="child_2" class="child"></div>
         <div id="child_3" class="child"></div>
       </div>
+      
 
       <div class="image_container" data-position="0">
         <div class="image_container_single">
@@ -99,7 +130,7 @@
           <img src="assets/images/croix_rouge_vector.png" alt="">
         </div>
       </div>
-    
+      <!-- <div class="rect_anime"></div> -->
     </div>
     
     <h2>coucou</h2>
@@ -131,6 +162,7 @@
         function changeColor(scrollPos) {
 
           let image_container = document.querySelector('.image_container')
+          let rect_anime = document.querySelector('.rect_anime')
 
           let scroller = document.querySelector(".scroller");
           let posM = scrollPos / (scroller.scrollHeight / 3);
@@ -151,7 +183,6 @@
             // console.log('child_1 pos = ', child_1.getBoundingClientRect())
             // console.log('child_1_RectOffset =' ,child_1_RectOffset)
             // console.log('snap = ',snap)
-
             // console.log("color =", color);
             // scroller.style.transition = ".4s ease-in-out";
             // scroller.style.backgroundColor = color;
@@ -159,14 +190,25 @@
             console.log("in");
             // image_container.style.transform = "translate(0px, -1600px)"
             // color = `rgb( ${238} ${189 * posM} ${205})`;
+
+
+
+            // Gsap animation elastic
+            // gsap.to(".scroller", {
+            //     x: 40,
+            //     duration: duration * .265 / 1000,
+            //     delay: 0,
+            //     ease: Elastic.easeOut.config(1.12, .4)
+            // });
             gsap.to(".scroller", {duration: .4,backgroundColor: "#EEBDCD",ease: "none"});
+           
             // console.log("color = ", color);
             // scroller.style.transition = ".4s ease-in-out";
             // scroller.style.backgroundColor = color;
           } else if (scrollPos >= 1400) {
             console.log(" > 800");
-            // image_container.style.transform = "translate(0px, -2400px)"
 
+            // image_container.style.transform = "translate(0px, -2400px)"
             // color = `rgb( ${204} ${38 * posM} ${52})`;
             // console.log("color = ", color);
             // scroller.style.transition = ".4s ease-in-out";
