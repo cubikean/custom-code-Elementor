@@ -18,6 +18,14 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      .btn_next{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: none;
+        background-color: aquamarine;
+        font-size: 30px;
+      }
       .container{
         width: 70%;
         margin: 0 auto;
@@ -97,6 +105,15 @@
         scroll-snap-align: start;
         min-height: 800px;
       }
+      .image_container .image_container_end{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 20px;
+        z-index: -6;
+        scroll-snap-align: start;
+        min-height: 20px;
+      }
       .image_container .image_container_single img{
         width: 100%;
         object-fit: contain;
@@ -110,25 +127,28 @@
   <body>
     <div class="container">
 
+      <button class="btn_next">Change Slide</button>
+
       <div class="scroller">
         <div id="child_1" class="child"></div>
         <div id="child_2" class="child"></div>
         <div id="child_3" class="child"></div>
+
       </div>
       
-
       <div class="image_container" data-position="0">
-        <div class="image_container_single">
+        <div id="first" class="image_container_single">
           <img src="assets/images/sc_L.png" alt="">
           <img src="assets/images/sc_R.png" alt="">
         </div>
-        <div class="image_container_single">
+        <div id="second" class="image_container_single">
           <img src="assets/images/alpine.png" alt="">
         </div>
-        <div class="image_container_single">
+        <div id="third" class="image_container_single">
           <img src="assets/images/croix_rouge.png" alt="">
           <img src="assets/images/croix_rouge_vector.png" alt="">
         </div>
+        <div id="four" class="image_container_end"></div>
       </div>
       <!-- <div class="rect_anime"></div> -->
     </div>
@@ -175,7 +195,7 @@
           // scroller.style.backgroundColor = color;
           
           if (scrollPos < 600) {
-            console.log("in 00");
+            console.log('')
             // image_container.style.transform = "translate(0px, -800px)"
             // color = `rgb( ${254} ${223 * posM} ${98})`;
             gsap.to(".scroller", {duration: .4,backgroundColor: "#FEDF62",ease: "none"});
@@ -187,7 +207,6 @@
             // scroller.style.transition = ".4s ease-in-out";
             // scroller.style.backgroundColor = color;
           } else if (scrollPos >= 600 && scrollPos <= 1200) {
-            console.log("in");
             // image_container.style.transform = "translate(0px, -1600px)"
             // color = `rgb( ${238} ${189 * posM} ${205})`;
 
@@ -215,15 +234,27 @@
             gsap.to(".scroller", {duration: .4,backgroundColor: "#CC2634",ease: "none"});
             // scroller.style.backgroundColor = color;
           }
+        if (scrollPos >= 1620) {
+            console.log(" > 1620");
+            // color = `rgb( ${204} ${38 * posM} ${52})`;
+            // console.log("color = ", color);
+            // scroller.style.transition = ".4s ease-in-out";
+            gsap.to(".scroller", {duration: .4,backgroundColor: "#FEDF62",ease: "none"});
+            // scroller.style.backgroundColor = color;
+          }
           //   document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
         }
+
+
+       
+
         let scroller = document.querySelector(".image_container");
 
         scroller.addEventListener("scroll", function (e) {
-          let scroller = document.querySelector(".image_container");
+          // let scroller = document.querySelector(".image_container");
 
           lastKnownScrollPosition = scroller.scrollTop;
-          console.log(lastKnownScrollPosition);
+          console.log('lastKnownScrollPosition',lastKnownScrollPosition);
 
           if (!ticking) {
             window.requestAnimationFrame(function () {
@@ -234,6 +265,28 @@
             ticking = true;
           }
         });
+        let btn_next = document.querySelector('.btn_next')
+
+        let value =  0;
+        
+        const test = document.querySelector(".image_container");
+
+        
+      btn_next.addEventListener('click', (e)=>{
+        setTimeout(() => {
+          lastKnownScrollPosition = scroller.scrollTop;
+          console.log('lastKnownScrollPosition BTN COOL : ',lastKnownScrollPosition);
+        }, 610);
+        
+        value = lastKnownScrollPosition + 800
+        if (value >= 2000){
+          value = 0
+        }
+        parent.scrollTop = value
+        
+        
+      })
+
       }
       document
         .querySelector(".image_container")
@@ -252,6 +305,8 @@
       let startX;
       let scrollTop;
       let isDown;
+
+      
 
       parent.addEventListener("mousedown", (e) => mouseIsDown(e));
       parent.addEventListener("mouseup", (e) => mouseUp(e));
@@ -276,6 +331,9 @@
           const y = e.pageY - parent.offsetTop;
           const walkY = (y - startY) * 2;
           parent.scrollTop = scrollTop - walkY;
+          if (scrollTop - walkY >= 1620){
+            parent.scrollTop = 0
+          }
         }
       }
     </script>
