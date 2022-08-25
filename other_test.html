@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="rgb(24, 97, 54)" />
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
     <title>Document</title>
     <style>
       body {
@@ -157,7 +158,7 @@
         <div id="child_3" class="child"></div>
 
       </div>
-      
+
       <div class="image_container" data-position="0">
         <div id="first" class="image_container_single">
           <img src="assets/images/sc_L.png" alt="">
@@ -184,11 +185,17 @@
         2e : rgb(238,189,205)
         3e : rgb(204,38,52)
      -->
-
     <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
     <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    
+    <script>
+      new kursor({
+          type: 4,
+          color: '#476582'
+      })
+  </script>
     <script>
       const motion = window.matchMedia(
         "(prefers-reduced-motion: no-preference)"

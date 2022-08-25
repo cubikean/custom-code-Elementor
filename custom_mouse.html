@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            cursor: none;
+        }
+      body {
+        height: 300vh;
+      }
+      .mouse_border {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid black;
+        transition: all 200ms ease-out;
+        position: fixed;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+        transform: translate(calc(-50% + 15px), -50%);
+      }
+      .mouse_inner {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        transition: width 0.3s, height 0.3s, opacity 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mouse_border">
+    </div>
+    <div class="mouse_inner"></div>
+
+
+    <script>
+      const cursor = document.querySelector(".mouse_border");
+      const cursorinner = document.querySelector(".mouse_inner");
+
+      document.addEventListener("mousemove", function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+      });
+
+      document.addEventListener("mousemove", function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        cursorinner.style.left = x + "px";
+        cursorinner.style.top = y + "px";
+      });
+
+      document.addEventListener("mousedown", function () {
+        cursor.classList.add("click");
+        cursorinner.classList.add("cursorinnerhover");
+      });
+
+      document.addEventListener("mouseup", function () {
+        cursor.classList.remove("click");
+        cursorinner.classList.remove("cursorinnerhover");
+      });
+
+     
+    </script>
+  </body>
+</html>

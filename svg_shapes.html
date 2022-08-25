@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .separator {
+        display: block;
+        position: absolute;
+        z-index: 1000;
+        pointer-events: none;
+        width: 100%;
+        height: 150px;
+        fill: var(--color-bg);
+      }
+      body{
+        height: 400vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 100vh;"></div>
+    <svg
+      class="separator separator--up"
+      width="100%"
+      height="100%"
+      viewBox="0 0 100 10"
+      preserveAspectRatio="none"
+    >
+      <path
+        class="separator__path path-anim"
+        d="M 0 0 C 40 0 60 0 100 0 L 0 0 Z"
+        data-path-to="M 0 0 C 40 10 60 10 100 0 L 0 0 Z"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+
+    <svg class="image-clip" width="500px" height="750px" viewBox="0 0 500 750">
+        <defs>
+            <clipPath id="shape1">
+                <path 
+                    class="path-anim" 
+                    d="M 0 0 L 500 0 C 500 599.6 500 677.1 500 750 L 0 750 C 0 205 0 105 0 0 Z"
+                    data-path-to="M 0 0 L 500 0 C 331 608 485 551 500 750 L 0 750 C 120 281 7 296 0 0 Z" 
+                />
+            </clipPath>
+        </defs>
+        <image 
+            clip-path="url(#shape1)" 
+            xlink:href="img/2.jpg" 
+            x="0" y="0" 
+            width="500" 
+            height="750"
+        />
+    </svg>
+
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+      const paths = [...document.querySelectorAll("path.path-anim")];
+
+      const lenis = new Lenis({
+    lerp: 0.1,
+    smooth: true,
+});
+
+      const scrollFn = () => {
+        lenis.raf();
+        requestAnimationFrame(scrollFn);
+      };
+      requestAnimationFrame(scrollFn);
+
+      paths.forEach(el => {
+    const svgEl = el.closest('svg');
+    const pathTo = el.dataset.pathTo;
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: svgEl,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    })
+    .to(el, {
+        ease: 'none',
+        attr: { d: pathTo }
+    });
+});
+    </script>
+  </body>
+</html>
