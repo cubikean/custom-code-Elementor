@@ -43,9 +43,9 @@
         cursor: grab;
       }
       .rect_anime{
-        height: 200px;
+        height: 400px;
         border-radius: 50%;
-        width: 300px;
+        width: 400px;
         z-index: -20;
         top: 600px;
         left: 50%;
@@ -69,6 +69,22 @@
           top: 0px;
           width: 300px;
           height: 200px;
+        }
+        
+      }
+      @keyframes infinitMovement {
+        0%{
+          transform: translateY(10px);
+        }
+        25%{
+        }
+        50%{
+          transform: translateY(-10px);
+        }
+        75%{
+        }
+        100%{
+          transform: translateY(10px);
         }
         
       }
@@ -121,6 +137,12 @@
         min-height: 400px;
         z-index: -6;
       }
+      .image_container .image_container_single img:nth-child(1){
+        animation: 3s ease-in-out infinite infinitMovement ;
+      }
+      .image_container .image_container_single img:nth-child(2){
+        animation: 5s ease-in-out infinite infinitMovement ;
+      }
 
     </style>
   </head>
@@ -150,7 +172,7 @@
         </div>
         <div id="four" class="image_container_end"></div>
       </div>
-      <!-- <div class="rect_anime"></div> -->
+      <div class="rect_anime"></div>
     </div>
     
     <h2>coucou</h2>
@@ -212,13 +234,19 @@
 
 
 
+
             // Gsap animation elastic
-            // gsap.to(".scroller", {
-            //     x: 40,
-            //     duration: duration * .265 / 1000,
-            //     delay: 0,
-            //     ease: Elastic.easeOut.config(1.12, .4)
+            // let rect_anime = document.querySelector('.rect_anime')
+            // gsap.fromTo(".rect_anime", {
+            //     y:0,
+            //     duration: .4,
+            //     width:400,
+            //     ease: Elastic.easeOut.config(1,.4)
             // });
+            
+
+            
+           
             gsap.to(".scroller", {duration: .4,backgroundColor: "#EEBDCD",ease: "none"});
            
             // console.log("color = ", color);
@@ -226,6 +254,7 @@
             // scroller.style.backgroundColor = color;
           } else if (scrollPos >= 1400) {
             console.log(" > 800");
+            
 
             // image_container.style.transform = "translate(0px, -2400px)"
             // color = `rgb( ${204} ${38 * posM} ${52})`;
