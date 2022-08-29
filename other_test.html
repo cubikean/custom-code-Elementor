@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="rgb(24, 97, 54)" />
-    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css" />
     <title>Document</title>
     <style>
       body {
@@ -19,7 +19,7 @@
       ::-webkit-scrollbar {
         display: none;
       }
-      .btn_next{
+      .btn_next {
         width: 200px;
         height: 200px;
         border-radius: 50%;
@@ -27,7 +27,7 @@
         background-color: aquamarine;
         font-size: 30px;
       }
-      .container{
+      .container {
         width: 70%;
         margin: 0 auto;
       }
@@ -43,7 +43,7 @@
         overflow-y: scroll;
         cursor: grab;
       }
-      .rect_anime{
+      .rect_anime {
         height: 400px;
         border-radius: 50%;
         width: 400px;
@@ -57,37 +57,35 @@
         animation-name: rect_anime;
       }
       @keyframes rect_anime {
-        from{
+        from {
           top: 570px;
           width: 280px;
           height: 200px;
         }
-        50%{
+        50% {
           width: 500px;
           height: 400px;
         }
-        to{
+        to {
           top: 0px;
           width: 300px;
           height: 200px;
         }
-        
       }
       @keyframes infinitMovement {
-        0%{
+        0% {
           transform: translateY(10px);
         }
-        25%{
+        25% {
         }
-        50%{
+        50% {
           transform: translateY(-10px);
         }
-        75%{
+        75% {
         }
-        100%{
+        100% {
           transform: translateY(10px);
         }
-        
       }
       .child {
         height: 100%;
@@ -100,7 +98,7 @@
       .space {
         height: 100vh;
       }
-      .image_container{
+      .image_container {
         display: flex;
         position: relative;
         flex-direction: column;
@@ -113,7 +111,7 @@
         overflow-y: scroll;
         cursor: grab;
       }
-      .image_container .image_container_single{
+      .image_container .image_container_single {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -122,7 +120,7 @@
         scroll-snap-align: start;
         min-height: 800px;
       }
-      .image_container .image_container_end{
+      .image_container .image_container_end {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -131,51 +129,74 @@
         scroll-snap-align: start;
         min-height: 20px;
       }
-      .image_container .image_container_single img{
+      .image_container .image_container_single img {
         width: 100%;
         object-fit: contain;
         max-height: 600px;
         min-height: 400px;
         z-index: -6;
       }
-      .image_container .image_container_single img:nth-child(1){
-        animation: 3s ease-in-out infinite infinitMovement ;
+      .image_container .image_container_single img:nth-child(1) {
+        animation: 3s ease-in-out infinite infinitMovement;
       }
-      .image_container .image_container_single img:nth-child(2){
-        animation: 5s ease-in-out infinite infinitMovement ;
+      .image_container .image_container_single img:nth-child(2) {
+        animation: 5s ease-in-out infinite infinitMovement;
       }
-
+      @media screen and (max-width:768px) {
+  .container{
+    width: 100%;
+  }
+  .scroller{
+    height: 300px;
+    width: 300px;
+  }
+  .image_container{
+    transform: translate(0px, -300px);
+    height: 300px;
+  }
+  .image_container .image_container_single{
+    max-height: 300px;
+    min-height: 300px;
+  }
+  .image_container .image_container_end{
+  }
+  .image_container .image_container_single img{
+    width: 200px;
+    object-fit: contain;
+    max-height: 200px;
+    min-height: 200px;
+    z-index: 2;
+  }
+}
     </style>
   </head>
   <body>
     <div class="container">
-
       <button class="btn_next">Change Slide</button>
 
       <div class="scroller">
         <div id="child_1" class="child"></div>
         <div id="child_2" class="child"></div>
         <div id="child_3" class="child"></div>
-
       </div>
 
       <div class="image_container" data-position="0">
         <div id="first" class="image_container_single">
-          <img src="assets/images/sc_L.png" alt="">
-          <img src="assets/images/sc_R.png" alt="">
+          <img src="assets/images/sc_L.png" alt="" />
+          <img src="assets/images/sc_R.png" alt="" />
         </div>
         <div id="second" class="image_container_single">
-          <img src="assets/images/alpine.png" alt="">
+          <img src="assets/images/alpine.png" alt="" />
         </div>
         <div id="third" class="image_container_single">
-          <img src="assets/images/croix_rouge.png" alt="">
-          <img src="assets/images/croix_rouge_vector.png" alt="">
+          <img src="assets/images/croix_rouge.png" alt="" />
+          <img src="assets/images/croix_rouge_vector.png" alt="" />
         </div>
         <div id="four" class="image_container_end"></div>
       </div>
-      <div class="rect_anime"></div>
+      <!-- <div class="rect_anime"></div> -->
     </div>
-    
+
     <h2>coucou</h2>
     <div class="space">test</div>
 
@@ -189,185 +210,201 @@
     <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    
     <script>
-      new kursor({
-          type: 4,
-          color: '#476582'
-      })
-  </script>
-    <script>
-      const motion = window.matchMedia(
-        "(prefers-reduced-motion: no-preference)"
-      );
+      window.addEventListener("load", () => {
+        const motion = window.matchMedia(
+          "(prefers-reduced-motion: no-preference)"
+        );
 
-      // Check if the media query matches or is not available.
-      if (motion.matches) {
-        let lastKnownScrollPosition = 0;
-        let ticking = false;
-        gsap.to(".scroller", {duration: 1,backgroundColor: "#FEDF62",ease: "none"});
+        if (motion.matches) {
+          let lastKnownScrollPosition = 0;
+          let ticking = false;
+          gsap.to(".scroller", {
+            duration: 1,
+            backgroundColor: "#FEDF62",
+            ease: "none",
+          });
 
-        let color_test = ["254", "223", "98"];
-        function changeColor(scrollPos) {
+          let color_test = ["254", "223", "98"];
+          function changeColor(scrollPos) {
+            let image_container = document.querySelector(".image_container");
+            let rect_anime = document.querySelector(".rect_anime");
 
-          let image_container = document.querySelector('.image_container')
-          let rect_anime = document.querySelector('.rect_anime')
+            let scroller = document.querySelector(".scroller");
+            let posM = scrollPos / (scroller.scrollHeight / 3);
+            console.log(scrollPos);
 
-          let scroller = document.querySelector(".scroller");
-          let posM = scrollPos / (scroller.scrollHeight / 3);
-          console.log("scrollPos = ", scrollPos);
-          console.log("posM = ", posM);
-          // let color = `rgb( ${254} ${223} ${98})`;
-          // let colorA = `rgb( ${254} ${223} ${98})`;
-
-          // const color = `rgb(${saturation} ${saturation} ${saturation})`;
-          // scroller.style.backgroundColor = color;
-          
-          if (scrollPos < 600) {
-            console.log('')
-            // image_container.style.transform = "translate(0px, -800px)"
-            // color = `rgb( ${254} ${223 * posM} ${98})`;
-            gsap.to(".scroller", {duration: .4,backgroundColor: "#FEDF62",ease: "none"});
-            
-            // console.log('child_1 pos = ', child_1.getBoundingClientRect())
-            // console.log('child_1_RectOffset =' ,child_1_RectOffset)
-            // console.log('snap = ',snap)
-            // console.log("color =", color);
-            // scroller.style.transition = ".4s ease-in-out";
-            // scroller.style.backgroundColor = color;
-          } else if (scrollPos >= 600 && scrollPos <= 1200) {
-            // image_container.style.transform = "translate(0px, -1600px)"
-            // color = `rgb( ${238} ${189 * posM} ${205})`;
-
-
-
-
-            // Gsap animation elastic
-            // let rect_anime = document.querySelector('.rect_anime')
-            // gsap.fromTo(".rect_anime", {
-            //     y:0,
-            //     duration: .4,
-            //     width:400,
-            //     ease: Elastic.easeOut.config(1,.4)
-            // });
-            
-
-            
-           
-            gsap.to(".scroller", {duration: .4,backgroundColor: "#EEBDCD",ease: "none"});
-           
-            // console.log("color = ", color);
-            // scroller.style.transition = ".4s ease-in-out";
-            // scroller.style.backgroundColor = color;
-          } else if (scrollPos >= 1400) {
-            console.log(" > 800");
-            
-
-            // image_container.style.transform = "translate(0px, -2400px)"
-            // color = `rgb( ${204} ${38 * posM} ${52})`;
-            // console.log("color = ", color);
-            // scroller.style.transition = ".4s ease-in-out";
-            gsap.to(".scroller", {duration: .4,backgroundColor: "#CC2634",ease: "none"});
-            // scroller.style.backgroundColor = color;
+            if (window.innerWidth <= 768) {
+              if (scrollPos < 200) {
+                gsap.to(".scroller", {
+                  duration: 0.4,
+                  backgroundColor: "#FEDF62",
+                  ease: "none",
+                });
+              } else if (scrollPos >= 200 && scrollPos <= 500) {
+                gsap.to(".scroller", {
+                  duration: 0.4,
+                  backgroundColor: "#EEBDCD",
+                  ease: "none",
+                });
+              } else if (scrollPos >= 500) {
+                gsap.to(".scroller", {
+                  duration: 0.4,
+                  backgroundColor: "#CC2634",
+                  ease: "none",
+                });
+                if (scrollPos >= 620) {
+                  gsap.to(".scroller", {
+                    duration: 0.4,
+                    backgroundColor: "#FEDF62",
+                    ease: "none",
+                  });
+                }
+              }
+            } else {
+              if (scrollPos < 600) {
+                gsap.to(".scroller", {
+                  duration: 0.4,
+                  backgroundColor: "#FEDF62",
+                  ease: "none",
+                });
+              } else if (scrollPos >= 600 && scrollPos <= 1200) {
+                gsap.to(".scroller", {
+                  duration: 0.4,
+                  backgroundColor: "#EEBDCD",
+                  ease: "none",
+                });
+              } else if (scrollPos >= 1400) {
+                gsap.to(".scroller", {
+                  duration: 0.4,
+                  backgroundColor: "#CC2634",
+                  ease: "none",
+                });
+                if (scrollPos >= 1620) {
+                  gsap.to(".scroller", {
+                    duration: 0.4,
+                    backgroundColor: "#FEDF62",
+                    ease: "none",
+                  });
+                }
+              }
+            }
           }
-        if (scrollPos >= 1620) {
-            console.log(" > 1620");
-            // color = `rgb( ${204} ${38 * posM} ${52})`;
-            // console.log("color = ", color);
-            // scroller.style.transition = ".4s ease-in-out";
-            gsap.to(".scroller", {duration: .4,backgroundColor: "#FEDF62",ease: "none"});
-            // scroller.style.backgroundColor = color;
-          }
-          //   document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
+          let scroller = document.querySelector(".image_container");
+
+          scroller.addEventListener("scroll", function (e) {
+            let scroller = document.querySelector(".image_container");
+
+            lastKnownScrollPosition = scroller.scrollTop;
+
+            if (!ticking) {
+              window.requestAnimationFrame(function () {
+                changeColor(lastKnownScrollPosition);
+                ticking = false;
+              });
+
+              ticking = true;
+            }
+          });
+          let btn_next = document.querySelector(".btn_next");
+          let value = 0;
+          btn_next.addEventListener("click", (e) => {
+            setTimeout(() => {
+              lastKnownScrollPosition = scroller.scrollTop;
+            }, 610);
+            if (window.innerWidth <= 768) {
+              console.log(window.innerWidth);
+              value = lastKnownScrollPosition + 300;
+              if (value >= 620) {
+                value = 0;
+              }
+              parent.scrollTop = value;
+            } else {
+              value = lastKnownScrollPosition + 800;
+              if (value >= 2000) {
+                value = 0;
+              }
+              parent.scrollTop = value;
+            }
+            startY = e.pageY - parent.offsetTop;
+            const y = e.pageY - parent.offsetTop;
+            const walkY = (y - startY) * 2;
+            console.log(startY);
+          });
         }
 
+        document
+          .querySelector(".image_container")
+          .addEventListener("wheel", preventScroll, { passive: false });
 
-       
-
-        let scroller = document.querySelector(".image_container");
-
-        scroller.addEventListener("scroll", function (e) {
-          // let scroller = document.querySelector(".image_container");
-
-          lastKnownScrollPosition = scroller.scrollTop;
-          console.log('lastKnownScrollPosition',lastKnownScrollPosition);
-
-          if (!ticking) {
-            window.requestAnimationFrame(function () {
-              changeColor(lastKnownScrollPosition);
-              ticking = false;
-            });
-
-            ticking = true;
-          }
-        });
-        let btn_next = document.querySelector('.btn_next')
-        let value =  0;
-        
-      btn_next.addEventListener('click', (e)=>{
-        setTimeout(() => {
-          lastKnownScrollPosition = scroller.scrollTop;
-          console.log('lastKnownScrollPosition BTN COOL : ',lastKnownScrollPosition);
-        }, 610);
-        
-        value = lastKnownScrollPosition + 800
-        if (value >= 2000){
-          value = 0
-        }
-        parent.scrollTop = value
-        
-        
-      })
-
-      }
-      document
-        .querySelector(".image_container")
-        .addEventListener("wheel", preventScroll, { passive: false });
-
-      function preventScroll(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        return false;
-      }
-
-      const child = document.querySelectorAll("section");
-      const parent = document.querySelector(".image_container");
-
-      let startX;
-      let scrollTop;
-      let isDown;
-
-      
-
-      parent.addEventListener("mousedown", (e) => mouseIsDown(e));
-      parent.addEventListener("mouseup", (e) => mouseUp(e));
-      parent.addEventListener("mouseleave", (e) => mouseLeave(e));
-      parent.addEventListener("mousemove", (e) => mouseMove(e));
-
-      function mouseIsDown(e) {
-        isDown = true;
-        startY = e.pageY - parent.offsetTop;
-        scrollTop = parent.scrollTop;
-      }
-      function mouseUp(e) {
-        isDown = false;
-      }
-      function mouseLeave(e) {
-        isDown = false;
-      }
-      function mouseMove(e) {
-        if (isDown) {
+        function preventScroll(e) {
           e.preventDefault();
-          //Move vertcally
-          const y = e.pageY - parent.offsetTop;
-          const walkY = (y - startY) * 2;
-          parent.scrollTop = scrollTop - walkY;
-          if (scrollTop - walkY >= 1620){
-            parent.scrollTop = 0
+        }
+
+        const child = document.querySelectorAll("section");
+        const parent = document.querySelector(".image_container");
+
+        let startX;
+        let scrollTop;
+        let isDown;
+
+        parent.addEventListener("mousedown", (e) => mouseIsDown(e));
+        parent.addEventListener("mouseup", (e) => mouseUp(e));
+        parent.addEventListener("mouseleave", (e) => mouseLeave(e));
+        if (window.innerWidth <= 768) {
+          parent.addEventListener("touchmove", (e) => mouseMoveMobile(e));
+          parent.addEventListener("touchstart", (e) => mouseIsDown(e));
+          parent.addEventListener("touchend", (e) => mouseUp(e));
+        } else {
+          parent.addEventListener("mousemove", (e) => mouseMove(e));
+        }
+
+        function mouseIsDown(e) {
+          console.log("in mouse is down");
+          isDown = true;
+          startY = e.pageY - parent.offsetTop;
+          scrollTop = parent.scrollTop;
+          console.log(scrollTop);
+          if (window.innerWidth <= 768) {
+            startY = e.touches[0].clientY - parent.offsetTop;
           }
         }
-      }
+        function mouseUp(e) {
+          isDown = false;
+        }
+        function mouseLeave(e) {
+          isDown = false;
+        }
+        function mouseMove(e) {
+          if (isDown) {
+            console.log(e);
+            e.preventDefault();
+            const y = e.pageY - parent.offsetTop;
+            const walkY = (y - startY) * 2;
+            parent.scrollTop = scrollTop - walkY;
+            if (scrollTop - walkY >= 1620) {
+              parent.scrollTop = 0;
+              console.log("scrolltop -walky", scrollTop - walkY);
+            }
+          }
+        }
+        function mouseMoveMobile(e) {
+          console.log("in mobile");
+          if (isDown) {
+            console.log("is Down :", isDown);
+            console.log(e);
+            e.preventDefault();
+            const y = e.touches[0].clientY - parent.offsetTop;
+            console.log("value y :", e.clientY);
+            const walkY = (y - startY) * 2;
+            parent.scrollTop = scrollTop - walkY;
+            console.log("test", scrollTop - walkY);
+            if (scrollTop - walkY >= 620) {
+              parent.scrollTop = 0;
+            }
+          }
+        }
+      });
     </script>
   </body>
 </html>
