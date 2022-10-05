@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circle Hover Btn</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+
+    <style>
+      button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        border: 0;
+        vertical-align: middle;
+        text-decoration: none;
+        background: transparent !important;
+        background-color: transparent !important;
+        padding: 0;
+        font-size: inherit;
+        font-family: inherit;
+      }
+      button.learn-more {
+        width: 12rem;
+        height: auto;
+      }
+      button.learn-more .circle {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        border: 1px solid #181818;
+        border-radius: 1.625rem;
+      }
+      button.learn-more .circle .icon {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #181818;
+      }
+      button.learn-more .circle .icon.arrow {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        left: 15px;
+        width: 15px;
+        height: 2px;
+        background: #181818;
+      }
+      button.learn-more .circle .icon.arrow::before {
+        position: absolute;
+        content: "";
+        top: -5px;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid #181818;
+        border-right: 2px solid #181818;
+        transform: rotate(45deg);
+      }
+      button.learn-more .button-text {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: #181818;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      button:hover .circle {
+        width: 100%;
+      }
+      button:hover .circle .icon.arrow {
+        background: #181818;
+        transform: translate(10px, 0);
+      }
+      button:hover .button-text {
+        color: #181818;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="learn-more">
+      <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+      </span>
+      <a href="#" class="button-text">Découvrir</a>
+    </button>
+  </body>
+</html>
