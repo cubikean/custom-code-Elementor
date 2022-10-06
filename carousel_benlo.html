@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel Benlo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 80%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #181818;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .swiper-scrollbar.swiper-scrollbar-vertical,
+      .swiper-vertical > .swiper-scrollbar {
+        transform: rotate(-90deg);
+        top: 50%;
+        right: 50%;
+      }
+      
+      .swiper-slide div {
+        width: 50%;
+      }
+      .swiper-button-prev,.swiper-button-next{
+        top: 0;
+        height: 100%;
+        cursor: none;
+      }
+      .swiper-button-prev::after,.swiper-button-next::after{
+        display: none;
+      }
+      .swiper-button-next img{
+        object-fit: contain;
+      }
+
+      
+      .mouse_left {
+        display: none;
+        z-index: 33;
+        background-image: url(./assets/images/arrow-left.svg);
+        background-repeat:no-repeat ;
+        background-position: center ;
+        width: 300px;
+        height: 300px;
+        position: fixed;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+        transform: translate(calc(-50% + 15px), -50%);
+      }
+      .mouse_right {
+        display: none;
+        z-index: 33;
+        background-image: url(./assets/images/arrow-right.svg);
+        background-repeat:no-repeat ;
+        background-position: center ;
+        width: 300px;
+        height: 300px;
+        position: fixed;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+        transform: translate(calc(-50% + 15px), -50%);
+      }
+      .swiper-scrollbar-vertical{
+        background: white;
+        width: 2px !important;
+        border-radius: 0;
+      }
+      .swiper-scrollbar-drag{
+        background: white;
+        left: -2px;
+        border-radius: 0;
+        width: 6px;
+      }
+      h2{
+        color: white;
+      }
+      .info{
+        display: none;
+        width: 100%;
+        height: auto;
+        background-color: #181818;
+      }
+      .container{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      .container h3,.container p{
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div data-swiper-slide="1" class="swiper-slide">
+          <div class="swiper-button-prev"><h2>coucou</h2></div>
+          <div class="swiper-button-next"><img src="./assets/images/alpine.png" alt=""></div>
+        </div>
+        <div data-swiper-slide="2" class="swiper-slide">
+          <div class="swiper-button-prev"><h2>coucou 2</h2></div>
+          <div class="swiper-button-next"><img src="./assets/images/croix_rouge.png" alt=""></div>
+        </div>
+        <div data-swiper-slide="3" class="swiper-slide">
+          <div class="swiper-button-prev"><h2>coucou 3</h2></div>
+          <div class="swiper-button-next"><img src="./assets/images/benlo_carousel-noBack.png" alt=""></div>
+        </div>
+      </div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <div class="info" data-info-slide="1">
+        <div class="container">
+            <div><h3>Vase</h3></div>
+            <div><p>x x cm</p><p>Wengé, Porcelaine emaillée </p></div>
+            <div><p>Edition limitée à 125 examplaires
+                 </p><p>Prix sur demande</p></div>
+        </div>
+    </div>
+    <div class="info" data-info-slide="2">
+        <div class="container">
+            <div><h3>caillou</h3></div>
+            <div><p>Lorem ipsum </p><p>Lorem ipsum consectetur adipisicing</p></div>
+            <div><p>Lorem ipsum </p><p>Lorem ipsum consectetur adipisicing</p></div>
+        </div>
+    </div>
+    <div class="info" data-info-slide="3">
+        <div class="container">
+            <div><h3>étoile</h3></div>
+            <div><p>Lorem ipsum </p><p>Lorem ipsum consectetur adipisicing</p></div>
+            <div><p>Lorem ipsum </p><p>Lorem ipsum consectetur adipisicing</p></div>
+        </div>
+    </div>
+    <div class="mouse_left"></div>
+    <div class="mouse_right"></div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        window.addEventListener('load', ()=>{
+
+      const mouseRight = document.querySelector(".mouse_right");
+
+        document.addEventListener("mousemove", function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        mouseRight.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+      });
+
+      const mouseLeft = document.querySelector(".mouse_left");
+
+        document.addEventListener("mousemove", function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        mouseLeft.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+      });
+
+      let nextEl = document.querySelectorAll('.swiper-button-next')
+      let prevEl = document.querySelectorAll('.swiper-button-prev')
+
+      let swiperContainer = document.querySelector('.swiper')
+
+      let swiperSlide1 = document.querySelector('[data-swiper-slide="1"]')
+      let swiperSlide2 = document.querySelector('[data-swiper-slide="2"]')
+      let swiperSlide3 = document.querySelector('[data-swiper-slide="3"]')
+
+      let infoSlide1 = document.querySelector('[data-info-slide="1"]')
+      let infoSlide2 = document.querySelector('[data-info-slide="2"]')
+      let infoSlide3 = document.querySelector('[data-info-slide="3"]')
+
+      function initInfoSwiper(){
+
+        if (swiperSlide1.classList.contains('swiper-slide-active')){
+            console.log('here info 1')
+            infoSlide1.style.display = "block"
+        }else{
+            infoSlide1.style.display = "none"
+        }
+
+        if (swiperSlide2.classList.contains('swiper-slide-active')){
+            infoSlide2.style.display = "block"
+        }else{
+            infoSlide2.style.display = "none"
+        }
+
+        if (swiperSlide3.classList.contains('swiper-slide-active')){
+            infoSlide3.style.display = "block"
+        }else{
+            infoSlide3.style.display = "none"
+        }
+    }
+    initInfoSwiper()
+      swiperContainer.addEventListener('click',()=>{
+        initInfoSwiper()
+      })
+      
+
+
+      nextEl.forEach(element => {
+        element.addEventListener('mouseover', ()=>{
+            mouseRight.style.display = 'block'
+        })
+        element.addEventListener('mouseleave', ()=>{
+            mouseRight.style.display = 'none'
+        })
+      });
+      prevEl.forEach(element => {
+        element.addEventListener('mouseover', ()=>{
+            mouseLeft.style.display = 'block'
+        })
+        element.addEventListener('mouseleave', ()=>{
+            mouseLeft.style.display = 'none'
+        })
+      });
+    })
+
+    </script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        direction: "vertical",
+        allowTouchMove:false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }
+      });
+    </script>
+  </body>
+</html>
