@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clip - Path</title>
+    <style>
+
+
+button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	vertical-align: middle;
+	text-decoration: none;
+	background: transparent !important;
+	background-color: transparent !important;
+	padding: 0;
+	font-size: inherit;
+	font-family: inherit;
+  }
+  button.learn-more {
+	width: 12rem;
+	height: auto;
+  }
+  button.learn-more .circle {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: relative;
+	display: block;
+	margin: 0;
+	width: 3rem;
+	height: 3rem;
+	border: 1px solid var(--btn-color-white);
+	border-radius: 1.625rem;
+  }
+  button.learn-more.btn-black .circle {
+	border: 1px solid var(--btn-color-black);
+  }
+  button.learn-more .circle .icon {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: var(--btn-color-white);
+  }
+  button.learn-more.btn-black .circle .icon {
+	background: var(--btn-color-black);
+
+  }
+  button.learn-more .circle .icon.arrow {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	left: 15px;
+	width: 15px;
+	height: 2px;
+	background: var(--btn-color-white);
+  }
+  button.learn-more.btn-black .circle .icon.arrow {
+	background: var(--btn-color-black);
+  }
+  button.learn-more .circle .icon.arrow::before {
+	position: absolute;
+	content: "";
+	top: -5px;
+	right: 0;
+	width: 10px;
+	height: 10px;
+	border-top: 2px solid var(--btn-color-white);
+	border-right: 2px solid var(--btn-color-white);
+	transform: rotate(45deg);
+  }
+  button.learn-more.btn-black .circle .icon.arrow::before {
+	border-top: 2px solid var(--btn-color-black);
+	border-right: 2px solid var(--btn-color-black);
+  }
+  button.learn-more .button-text {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0.75rem 0;
+	margin: 0 0 0 1.85rem;
+	color: var(--btn-color-white);
+	font-weight: 700;
+	line-height: 1.6;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+  }
+  button.learn-more.btn-black .button-text {
+	color: var(--btn-color-black);
+}
+  button:hover .circle {
+	width: 100%;
+  }
+  button:hover .circle .icon.arrow {
+	background: var(--btn-color-white);
+	transform: translate(10px, 0);
+  }
+  button.btn-black:hover .circle .icon.arrow {
+	background: var(--btn-color-black);
+  }
+  button:hover .button-text {
+	color: var(--btn-color-white);
+  }
+  button.btn-black *{
+	color: var(--btn-color-black) ;
+  }
+        .b-home_immersion{
+            height: 200vh;
+        }
+        .b-home_immersion-sticky{
+            will-change: transform;
+            transform: translate3d(0px, 0px, 0px);
+            top: 0px;
+            width: 100%;
+            /* position: fixed; */
+            height: calc(100 * 6px);
+            display: flex;
+        }
+        .b-home_immersion-container{
+            width: 100%;
+            position: relative;
+        }
+        .b-home_immersion-porthole {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.b-home_immersion-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+.clip-path-home{
+	clip-path: circle(5% at center center)
+
+}
+body{
+    margin: 0;
+    padding:0;
+}
+.clip-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.clip-container .clip-container-left{
+    width: 50%;
+    height: 100%;
+}
+.clip-container .clip-container-right{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.clip-container .clip-container-right p{
+    font-size: 32px;
+    color: white;
+}
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+   
+    <div class="b-home_immersion ">
+        <div class="b-home_immersion-sticky">
+            <div class="b-home_immersion-container">
+                <div class="b-home_immersion-porthole">
+                    <div class="b-home_immersion-image">		
+                        <img class="is-landscape clip-path-home" src="https://barge166.com/wp-content/uploads/2022/03/30092021-z0a0904-3-1920x1192.jpg">
+                    </div>
+                    <div class="clip-container">
+                        <div class="clip-container-left"></div>
+                        <div class="clip-container-right">
+                            <p>Installé en périphérie de La Rochelle, l’atelier est une aire modulable en fonction de l’espace de travail nécessaire, pouvant évoluer au grès des sculptures. Entièrement équipé et autonome, il prend en charge la globalité des projets, de leur conception à la finition.
+                            </p>
+                            <button class="learn-more btn-black">
+                                <span class="circle" aria-hidden="true">
+                                  <span class="icon arrow"></span>
+                                </span>
+                                <a href="#" class="button-text">Découvrir</a>
+                              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="test" style="height: 101vh;">
+    <h2>koekedoekd</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit, excepturi? Delectus quod quae minima quam deserunt culpa cum numquam inventore saepe, facilis, velit eum! Magni cupiditate ab deserunt harum sapiente.</p>
+    </div>
+
+
+    <script>
+        window.addEventListener('load', ()=>{
+
+            let bodyRect = document.body.getBoundingClientRect();
+            let clip_path = document.querySelector('.b-home_immersion').getBoundingClientRect();
+            old_min = -200
+            old_max = 600
+            new_min = 0
+            new_max = 100
+
+            const clipPath = document.querySelector('.b-home_immersion-sticky');
+
+            document.addEventListener('scroll', clipPathHome);
+            function clipPathHome(){
+
+                const HomeImmersionIsTopOfScreen = document.querySelector('.b-home_immersion').offsetTop - window.scrollY
+                const TestIsTopOfScreen = document.querySelector('#test').offsetTop - window.scrollY
+
+                console.log("HomeImmersionIsTopOfScreen",HomeImmersionIsTopOfScreen)
+                console.log("TestIsTopOfScreen",TestIsTopOfScreen)
+
+                let offset = clip_path.top - window.scrollY;
+                let old_value = offset
+
+                let new_value = (( (old_value - old_min) / (old_max - old_min) ) * (new_min - new_max) + new_max)-70
+                let value0To100 = Math.round(new_value)
+
+                console.log(value0To100)
+                if (!document.querySelector('.b-home_immersion').classList.contains('done')){
+                    if (HomeImmersionIsTopOfScreen <= 0){
+                        document.querySelector('.b-home_immersion-sticky').style.position = `fixed`
+                        document.querySelector('.clip-path-home').style.clipPath = `circle(${value0To100}% at center center)`
+                    }
+                    if (HomeImmersionIsTopOfScreen > 0){
+                        document.querySelector('.b-home_immersion-sticky').style.position = `relative`
+                    }
+                    if (TestIsTopOfScreen <= 0){
+                        document.querySelector('.b-home_immersion-sticky').style.position = `relative`
+                    }
+
+
+                    if (new_value >= 100){
+                        document.querySelector('.b-home_immersion-sticky').style.position = `relative`
+                        document.querySelector('.b-home_immersion').style.height = `100vh`
+                        clipPath.scrollIntoView();
+                        document.querySelector('.b-home_immersion').classList.add('done')
+                    }
+                }
+
+                
+                
+                
+
+            }
+
+        
+        })
+
+    </script>
+    
+</body>
+</html>
