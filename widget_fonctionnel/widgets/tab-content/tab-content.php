@@ -87,6 +87,9 @@ class Tab_Content extends Widget_Base {
 				'label' => __( 'Titre de l\'onglet', 'tab-content' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);     
 
@@ -98,7 +101,10 @@ class Tab_Content extends Widget_Base {
 			[
 				'label' => __( 'Titre du contenu', 'tab-content' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'input_type' => 'text'
+				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);      
 
@@ -107,7 +113,10 @@ class Tab_Content extends Widget_Base {
 			[
 				'label' => __( 'Contenu', 'tab-content' ),
 				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'input_type' => 'wysiwyg'
+				'input_type' => 'wysiwyg',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);     
     
@@ -146,19 +155,19 @@ class Tab_Content extends Widget_Base {
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'TitleTab' => esc_html__( 'Titre section 1', 'tab-content' ),
-						'ImageTab' => esc_html__( 'Image de l\'onglet', 'tab-content' ),
-						'TitleContent' => esc_html__( 'Titre de votre contenu.', 'tab-content' ),
-						'Content' => esc_html__( 'Votre contenu.', 'tab-content' ),
-						'ImageContent' => esc_html__( 'Image de votre contenu.', 'tab-content' ),
+						'TitleTab' => esc_html__( 'Titre de l\'onglet ...', 'tab-content' ),
+						// 'ImageTab' => esc_html__( 'Image de l\'onglet', 'tab-content' ),
+						'TitleContent' => esc_html__( 'Titre de votre contenu...', 'tab-content' ),
+						'Content' => esc_html__( 'Votre contenu...', 'tab-content' ),
+						// 'ImageContent' => esc_html__( 'Image de votre contenu.', 'tab-content' ),
 						// 'GalleryIcon' => esc_html__( 'Icon bas de page.', 'tab-content' ),
 					],
 					[
-						'TitleTab' => esc_html__( 'Titre section 2', 'tab-content' ),
-						'ImageTab' => esc_html__( 'Image de l\'onglet', 'tab-content' ),
-						'TitleContent' => esc_html__( 'Titre de votre contenu.', 'tab-content' ),
-						'Content' => esc_html__( 'Votre contenu.', 'tab-content' ),
-						'ImageContent' => esc_html__( 'Image de votre contenu.', 'tab-content' ),
+						'TitleTab' => esc_html__( 'Titre de l\'onglet ...', 'tab-content' ),
+						// 'ImageTab' => esc_html__( 'Image de l\'onglet', 'tab-content' ),
+						'TitleContent' => esc_html__( 'Titre de votre contenu...', 'tab-content' ),
+						'Content' => esc_html__( 'Votre contenu...', 'tab-content' ),
+						// 'ImageContent' => esc_html__( 'Image de votre contenu.', 'tab-content' ),
 						// 'GalleryIcon' => esc_html__( 'Icon bas de page.', 'tab-content' ),
 					],
 				],
@@ -186,6 +195,7 @@ class Tab_Content extends Widget_Base {
 		 *  Here you can output your control data and build your content.
 		 **/
 		// var_dump($settings['list']);
+		
 
 		
     ?>
@@ -201,10 +211,20 @@ class Tab_Content extends Widget_Base {
 
         <?php if ( $settings['list'] ) { 
 			$valueIncRender = 1;?>
-        <?php foreach (  $settings['list'] as $item ) { ?>
+        <?php foreach (  $settings['list'] as $index => $item ) { ?>
+
+			<?php 
+
+				// inline editing setup for TitleTab
+				$repeater_setting_key_title_tab = $this->get_repeater_setting_key( 'TitleTab', 'list', $index );
+				$this->add_inline_editing_attributes( $repeater_setting_key_title_tab );
+
+				
+
+			?>
           <li class="tab<?= $valueIncRender ?>">
             <label for="tab<?= $valueIncRender ?>" class="image-icon">
-              <img src="<?= $item['ImageTab']['url'] ?>" alt="" /> <p><?= $item['TitleTab'] ?> </p></label>
+              <img src="<?= $item['ImageTab']['url'] ?>" alt="" /> <p <?php $this->print_render_attribute_string( $repeater_setting_key_title_tab ) ?> ><?php $title_tab = $settings['list'][$index]['TitleTab']; echo $title_tab ?> </p></label>
           </li>
 			<?php $valueIncRender = $valueIncRender + 1; }} ?>
 
@@ -214,18 +234,36 @@ class Tab_Content extends Widget_Base {
         
       <?php if ( $settings['list'] ) { 
 			  $valueIncRenderTab = 1;?>
-        <?php foreach (  $settings['list'] as $item ) { ?>
+        <?php foreach (  $settings['list'] as $index => $item ) { ?>
+			<?php 
+
+				
+
+				// inline editing setup for TitleContent
+				$repeater_setting_key_title_content = $this->get_repeater_setting_key( 'TitleContent', 'list', $index );
+				$this->add_inline_editing_attributes( $repeater_setting_key_title_content );
+
+				// inline editing setup for Content
+				$repeater_setting_key_content = $this->get_repeater_setting_key( 'Content', 'list', $index );
+				$this->add_inline_editing_attributes( $repeater_setting_key_content );
+
+
+
+			?>
           <div class="tab tab<?= $valueIncRenderTab ?>">
           <div class="tab-container">
             <div class="tab-container_image">
               <img src="<?= $item['ImageContent']['url'] ?>" alt="" />
             </div>
             <div class="tab-container_content">
-              <h2 class="tab-container_content_title">
-              <?php echo $item['TitleContent'] ?>
+              <h2 <?php $this->print_render_attribute_string( $repeater_setting_key_title_content ) ?> class="tab-container_content_title">
+			  
+              <?php $title = $settings['list'][$index]['TitleContent']; echo $title ?>
+			  
+
               </h2>
-              <p class="tab-container_content_text">
-              <?php echo $item['Content'] ?>
+              <p <?php $this->print_render_attribute_string( $repeater_setting_key_content ) ?> class="tab-container_content_text">
+              <?php $content = $settings['list'][$index]['Content']; echo $content ?>
               </p>
             </div>
             <div class="tab-container_icon">
@@ -286,16 +324,21 @@ class Tab_Content extends Widget_Base {
       <# if ( settings.list ) { #>
           <# var valueIncTemplateSection = 1 ;#>
 			    <# _.each( settings.list, function( item ) { #>
+					<#
+		view.addInlineEditingAttributes( 'TitleContent', 'advanced' );
+		view.addInlineEditingAttributes( 'Content', 'advanced' );
+		#>
+					
         <div class="tab tab{{ valueIncTemplateSection }}">
           <div class="tab-container">
             <div class="tab-container_image">
               <img src="{{ item.ImageContent.url }}" alt="" />
             </div>
             <div class="tab-container_content">
-              <h2 class="tab-container_content_title">
+              <h2 {{{ view.getRenderAttributeString( 'TitleContent' ) }}} class="tab-container_content_title">
                 {{{ item.TitleContent }}}
               </h2>
-              <p class="tab-container_content_text">
+              <p {{{ view.getRenderAttributeString( 'Content' ) }}} class="tab-container_content_text">
                {{{ item.Content }}}
               </p>
             </div>
