@@ -82,9 +82,22 @@ h1 {
 }
 .pc-tab section .tab h2 {
   margin: 0;
-  font-family: "Raleway";
-  letter-spacing: 1px;
-  color: #34495e;
+  font-family: var(--heading--font-family);
+  font-size: 32px;
+  color: black;
+}
+.pc-tab section .tab p{
+  margin: 0;
+  font-family: var(--heading--font-family);
+  font-size: 20px;
+  color: black;
+}
+.pc-tab nav ul .image-icon p {
+  margin: 0;
+  font-family: var(--heading--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
 }
 #tab1:checked ~ nav .tab1 label,
 #tab2:checked ~ nav .tab2 label,
@@ -188,7 +201,7 @@ label {
   object-fit: contain;
 }
 
-li img {
+label.image-icon img {
   width: 100%;
   max-width: 25px;
 }
