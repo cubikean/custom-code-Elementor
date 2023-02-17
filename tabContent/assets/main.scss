@@ -1,0 +1,188 @@
+
+body{
+    background-color: gray;
+}
+.bk-tab{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    max-width: 1100px;
+    margin-inline: auto;
+
+    &__nav{
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        background-color: white;
+        border-radius: 300px;
+        padding: 8px 24px;
+        width: fit-content;
+        min-width: 300px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+
+        @media screen and (max-width:768px) {
+            justify-content: center;
+
+        }
+    
+        &__item{
+            border: none;
+            padding: 10px 16px;
+            border-radius: 300px;
+            color: black;
+            background-color: white;
+    
+            &:hover{
+                cursor: pointer;
+            }
+
+            &--active{
+                background-color: black;
+                color: white;
+            }
+
+            @media screen and (max-width:768px) {
+                display: none;
+
+            }
+    
+        }  
+        
+        &__select{
+            display: none;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 300px;
+            color: black;
+            background-color: white;
+            width: 100%;
+
+            @media screen and (max-width:768px) {
+                display: block;
+
+            }
+
+            &:focus-visible{
+                outline: none;
+            }
+            
+        }
+    }   
+
+    &__container{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 60px;
+
+        @media screen and (max-width:768px) {
+            gap:40px;
+        }
+
+        &__top{
+
+            &__single{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                @media screen and (max-width:768px) {
+                    flex-wrap: wrap;
+                }
+
+                &__image{
+                    flex: 1 1 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    @media screen and (max-width:768px) {
+                        flex: 1 1 100%;
+                    }
+
+                    img{
+                        max-width: 100%;
+                        width: 60%;
+                    }
+                }
+
+                &__content{
+                    flex: 1 1 50%;
+                    padding: 40px 20px ;
+                    
+                    @media screen and (max-width:768px) {
+                        flex: 1 1 100%;
+                    }
+
+                    &__title{
+                        font-size: 36px;
+                        font-weight: 700;
+                        margin-bottom: 8px;
+
+                        @media screen and (max-width:768px) {
+                            text-align: center;
+                        }
+                    }
+
+                    &__text{
+                        font-size: 16px;
+                        font-weight: 500;
+
+                        @media screen and (max-width:768px) {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__icon{
+
+            &__single{
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                padding: 20px ;
+
+                &__content{
+                    flex: 1 1 25%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    @media screen and (max-width:768px) {
+                        flex: 1 1 50%;
+                    }
+                    
+
+                    img{
+                        max-width: 80px;
+                        min-width: 80px;
+                        object-fit: cover;
+                    }
+                    
+                    h3{
+                        font-size: 16px;
+                        font-weight: 700;
+                        margin-bottom: 8px;
+                        margin-top: 20px;
+                    }
+
+                    p{
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 8px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+ 
