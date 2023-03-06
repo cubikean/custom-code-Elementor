@@ -1,0 +1,33 @@
+    .BK-container-video {
+      margin-inline: auto;
+      height: 100vh;
+      position: relative;
+    }
+    .BK-video {
+      position: relative !important;
+      /* top: 0 !important; */
+      width: 100%;
+      display: block;
+      margin-inline: auto !important;
+      object-fit: cover;
+      height: 100%;
+    }
+    .BK-absolText {
+      position: absolute;
+      top: 150px;
+      font-size: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      color: white;
+      opacity: 0;
+    }
+    .BK-bottomVideoBlur {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(0deg, black, black 15%, transparent);
+      height: 50vh;
+      opacity: 1;
+      width: 100%;
+    }

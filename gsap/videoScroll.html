@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
     }
-    .container {
+    .container-video {
       /* max-width: 1200px; */
       margin-inline: auto;
       height: 100vh;
@@ -26,6 +26,8 @@
       width: 100%;
       display: block;
       margin-inline: auto !important;
+      object-fit: cover;
+      height: 100%;
     }
     .absolText {
       position: absolute;
@@ -51,23 +53,23 @@
     }
   </style>
   <body>
-    <div class="container">
+    <div class="container-video">
       <h1>coucou les loulous</h1>
-      <img src="https://via.placeholder.com/850" alt="" />
+      <!-- <img src="https://via.placeholder.com/850" alt="" /> -->
 
       <div class="spacer"></div>
     </div>
     <div class="spacer"></div>
 
-    <div class="container">
-      <video preload="auto" mute="false" controls autoplay>
-        <source src="drone.mp4" type="video/mp4" />
+    <div class="container-video">
+      <video autoplay muted playsinline loop >
+        <source src="https://youtu.be/dQw4w9WgXcQ" type="video/mp4" />
       </video>
       <div class="bottomVideoBlur"></div>
       <h2 class="absolText">test de texte sur la vidéo</h2>
     </div>
 
-    <div class="container section-color">
+    <div class="container-video section-color">
       <div class="spacer"></div>
       <h2>A plus tout le monde !</h2>
       <div class="spacer"></div>
@@ -83,7 +85,7 @@
       const video = document.querySelector("video");
       const absolText = document.querySelector(".absolText");
       const backVideo = document.querySelector(".bottomVideoBlur");
-      const container = document.querySelectorAll(".container");
+      const containervideo = document.querySelectorAll(".container-video");
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: video,
