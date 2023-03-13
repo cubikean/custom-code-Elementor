@@ -1,0 +1,51 @@
+    .BK-container-video {
+      margin-inline: auto;
+      height: 100vh;
+      position: relative;
+    }
+    .BK-video {
+      position: relative !important;
+      /* top: 0 !important; */
+      width: 100%;
+      display: block;
+      margin-inline: auto !important;
+      object-fit: cover;
+      height: 100%;
+    }
+    .BK-absolText {
+      position: absolute;
+      top: 150px;
+      font-size: 60px;
+      width: 100%;
+      text-align: center;
+      /* left: 50%; */
+      /* transform: translateX(-50%); */
+      z-index: 1;
+      color: white;
+      opacity: 0;
+    }
+    .elementor-editor-active .view{
+      opacity: 1 !important;
+    }
+    @media screen and (max-width:1200px) {
+      .BK-absolText{
+        font-size: 36px;
+      }
+      
+    }
+    @media screen and (max-width:768px) {
+      .BK-absolText{
+        font-size: 28px;
+        padding: 0 10%;
+      }
+      
+    }
+    .BK-bottomVideoBlur {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      /* background: linear-gradient(0deg, black, black 15%, transparent); */
+      height: 50vh;
+      opacity: 1;
+      width: 100%;
+    }
