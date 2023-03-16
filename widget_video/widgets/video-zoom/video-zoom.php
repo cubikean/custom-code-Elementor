@@ -22,7 +22,7 @@ class Video_Zoom extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return 'Video zoom';
+		return 'Skydrone Video';
 	}
 
 	/**
@@ -70,34 +70,113 @@ class Video_Zoom extends Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
-		$this->start_controls_section(
-			'content_section',
+		$this->add_control(
+			'switch',
 			[
-				'label' => __( 'Video zoom', 'video-zoom' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'label' => esc_html__( 'Nombres', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
 			]
 		);
+
+		$this->add_control(
+			'numbVideo',
+			[
+				'label' => __( 'Nombre vidéo', 'video-zoom' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);   
+		$this->add_control(
+			'suffixTextVideo',
+			[
+				'label' => __( 'Suffix Texte vidéo', 'video-zoom' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'text',
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);   
+
 
 		$this->add_control(
 			'textVideo',
 			[
 				'label' => __( 'Texte vidéo', 'video-zoom' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'text',
+				'condition' => [
+					'switch' => '',
+				],
+			]
+		);   
+
+		
+
+		$this->add_control(
+			'subTextVideo',
+			[
+				'label' => __( 'Sous Texte vidéo', 'video-zoom' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
 				'input_type' => 'text'
 			]
-		);      
+		);    
+
+		$this->add_control(
+			'text_color',
+			[
+				'label' => esc_html__( 'Couleur du texte', 'video-zoom' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .BK-absolText' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'video_blur',
+			[
+				'label' => esc_html__( 'Couleur du blur', 'video-zoom' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .BK-bottomVideoBlur' => 'background: linear-gradient(0deg, {{VALUE}}, {{VALUE}} 15%, transparent)',
+				],
+			]
+		);
 
 		$this->add_control(
 			'video',
 			[
 				'label' => __( 'Vidéo', 'video-zoom' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				'media_type' => 'video',
+				'library' => [
+					'type' => [ 'video' ],
+				],
+				'dynamic' => [
+					'active' => true,
 				],
 			]
-		);      
+		);   
+		
+		$this->add_control(
+			'video_link',
+			[
+				'label' => __( 'Lien Vidéo', 'video-zoom' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'video-zoom' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					// 'custom_attributes' => '',
+				],
+				'label_block' => true,
+			]
+		);   
 
 	}
 
@@ -118,45 +197,28 @@ class Video_Zoom extends Widget_Base {
 		 **/
 
  ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+
  
-  <body>
-    <div class="container-video">
-      <h1>coucou les loulous</h1>
-      <!-- <img src="https://via.placeholder.com/850" alt="" /> -->
-
-      <div class="spacer"></div>
-    </div>
-    <div class="spacer"></div>
-
-    <div class="container-video">
-      <video autoplay muted playsinline loop >
+    <div class="BK-container-video">
+		<?php if($settings['video']['url']): ?>
+      <video  class="BK-video" autoplay muted playsinline loop >
         <source src="<?php echo $settings['video']['url'] ?>" type="video/mp4" />
       </video>
-      <div class="bottomVideoBlur"></div>
-      <h2 class="absolText"><?php echo $settings['textVideo'] ?></h2>
-    </div>
+	  <?php endif ?>
+		<?php if($settings['video_link']['url']): ?>
 
-    <div class="container-video section-color">
-      <div class="spacer"></div>
-      <h2>A plus tout le monde !</h2>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
+	  <iframe class="BK-video" height="1100px" src="<?php echo $settings['video_link']['url'] ?>?autoplay=1&mute=1&showinfo=0&rel=0&loop=1&playsinline=1&controls=0" title="" frameborder="0"></iframe>
+	  <?php endif ?>
+      <div class="BK-bottomVideoBlur"></div>
+	  <?php if ( 'yes' === $settings['switch'] ) : ?>
+		<h2 class="BK-absolText decompte view" data-number="<?php echo $settings['numbVideo'] ?>" data-suffix="<?php echo $settings['suffixTextVideo'] ?>"><?php echo $settings['numbVideo'] ?> <span><?php echo $settings['suffixTextVideo'] ?></span></h2>
+	  <?php else : ?>
+      	<h2 class="BK-absolText view"><?php echo $settings['textVideo'] ?></h2>
+	  <?php endif ?>
+      <h3 class="BK-absolSubText view"><?php echo $settings['subTextVideo'] ?></h3>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-  </body>
-</html>
 
  <?php
 
@@ -169,45 +231,29 @@ class Video_Zoom extends Widget_Base {
 	 */
 	protected function _content_template() {
 		?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
- 
-  <body>
-    <div class="container-video">
-      <h1>coucou les loulous</h1>
-      <!-- <img src="https://via.placeholder.com/850" alt="" /> -->
 
-      <div class="spacer"></div>
-    </div>
-    <div class="spacer"></div>
-
-    <div class="container-video">
-      <video autoplay muted playsinline loop >
+    <div class="BK-container-video">
+	<# if ( settings.video.url ){ #>
+      <video class="BK-video" autoplay muted playsinline loop >
         <source src="{{ settings.video.url }}" type="video/mp4" />
       </video>
-      <div class="bottomVideoBlur"></div>
-      <h2 class="absolText">{{{ settings.textVideo }}}</h2>
-    </div>
+	  <# } #>
+	  <# if ( settings.video_link.url ){ #>
+	  <iframe class="BK-video" height="1100px" src="{{ settings.video_link.url }}?autoplay=1&mute=1&showinfo=0&rel=0&loop=1&playsinline=1&controls=0" title="" frameborder="0"></iframe>
+	  <# } #>
+      <div class="BK-bottomVideoBlur"></div>
+	  <# if  ( 'yes' === settings.switch ) { #>
+		<h2 class="BK-absolText decompte view" data-number="{{ settings.numbVideo }}" data-suffix="{{ settings.suffixTextVideo }}"> {{{ settings.numbVideo }}} </h2>
+	  <# } #>
+	  <# if  ( 'yes' != settings.switch ) { #>
+      	<h2 class="BK-absolText view"> {{{ settings.textVideo }}}</h2>
+	  <# } #>
+      <h3 class="BK-absolSubText view">{{{ settings.subTextVideo }}}</h3>
 
-    <div class="container-video section-color">
-      <div class="spacer"></div>
-      <h2>A plus tout le monde !</h2>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-  </body>
-</html>
 
 		<?php
 	}
