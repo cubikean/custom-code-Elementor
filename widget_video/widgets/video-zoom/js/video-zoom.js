@@ -1,6 +1,6 @@
 const videos = document.querySelectorAll(".BK-video");
 const absoluteTexts = document.querySelectorAll(".BK-absolText");
-const numText = document.querySelector(".decompte");
+const numText = document.querySelectorAll(".decompte");
 const absoluteSubTexts = document.querySelectorAll(".BK-absolSubText");
 const backVideos = document.querySelectorAll(".BK-bottomVideoBlur");
 const containerVideos = document.querySelectorAll(".BK-container-video");
@@ -41,7 +41,7 @@ videos.forEach((video, index) => {
   });
 
   gsap.set(
-    ".decompte",
+    numText[index],
     {
       textContent: 0,
       duration: 3,
@@ -52,9 +52,9 @@ videos.forEach((video, index) => {
     }
   );
   gsap.to(
-    '.decompte',
+    numText[index],
     {
-      textContent: numText.dataset.number,
+      textContent: numText[index].dataset.number,
       duration: 1,
       ease: Power1.easeIn,
       snap: { textContent: 1 },
@@ -63,23 +63,22 @@ videos.forEach((video, index) => {
     }
   );
   gsap.to(
-    '.decompte',
+    numText[index],
     {
-      textContent: numText.dataset.number,
+      textContent: numText[index].dataset.number,
       duration: 1,
       ease: Power1.easeIn,
       snap: { textContent: 1 },
       stagger: 1,
       scrollTrigger: {
-        trigger: '.decompte',
+        trigger: numText[index],
         start: "top 66%",
-        markers:true,
+        // markers:true,
         toggleActions: "play none none reverse",
         pinSpacing: false,
       },
     }
   );
-  
 });
 
 document.addEventListener('load', ()=>{
