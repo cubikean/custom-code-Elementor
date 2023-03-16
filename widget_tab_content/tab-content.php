@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Tab Content
+Plugin Name: Skydrone Produit
 Version: 1.0
 */
 
@@ -17,7 +17,7 @@ final class Tab_Content {
 	 *
 	 * @var string The plugin version.
 	 */
-	const VERSION = '1.1.0';
+	const VERSION = '1.0.0';
 
 	/**
 	 * Minimum Elementor Version
@@ -103,7 +103,7 @@ final class Tab_Content {
 	}
 
 	public function widget_scripts() {
-		wp_enqueue_script( 'tab-content-js', plugins_url( 'widgets/tab-content/js/tab-content.js', __FILE__ ), array( 'jquery' ) );
+		wp_enqueue_script( 'tab-content-js', plugins_url( 'widgets/tab-content/js/tab-content.js', __FILE__ ) );
 
 	}
 
@@ -123,7 +123,7 @@ final class Tab_Content {
 		$message = sprintf(
 		/* 1: Plugin name 2: Elementor */
 			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'tab-content' ),
-			'<strong>' . esc_html__( 'Tab Content', 'tab-content' ) . '</strong>',
+			'<strong>' . esc_html__( 'Skydrone Produit', 'tab-content' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'tab-content' ) . '</strong>'
 		);
 
@@ -147,7 +147,7 @@ final class Tab_Content {
 		$message = sprintf(
 		/* 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'tab-content' ),
-			'<strong>' . esc_html__( 'Tab Content', 'tab-content' ) . '</strong>',
+			'<strong>' . esc_html__( 'Skydrone Produit', 'tab-content' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'tab-content' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
@@ -171,7 +171,7 @@ final class Tab_Content {
 		$message = sprintf(
 		/* 1: Plugin name 2: PHP 3: Required PHP version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'tab-content' ),
-			'<strong>' . esc_html__( 'Tab Content', 'tab-content' ) . '</strong>',
+			'<strong>' . esc_html__( 'Skydrone Produit', 'tab-content' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'tab-content' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
