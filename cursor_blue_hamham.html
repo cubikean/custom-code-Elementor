@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue HamHam</title>
+    <style>
+      .cmn-cursor {
+        z-index: 1000;
+        display: none;
+        position: fixed;
+        left: -5px;
+        top: -5px;
+        width: 10px;
+        height: 10px;
+        pointer-events: none;
+        mix-blend-mode: difference;
+      }
+
+      .cmn-cursor__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #ffcefe;
+        border-radius: 50%;
+      }
+
+      .cmn-cursor.is-active {
+        display: block;
+      }
+
+      * {
+        cursor: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cmn-cursor is-active" id="js-cmn-cursor">
+      <div class="cmn-cursor__inner" id="js-cmn-cursor__inner"></div>
+    </div>
+
+    <a href="#">coucou</a>
+
+    <br /><br /><br /><br />
+    <a href="#">test</a>
+
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+      var customCursor = function () {
+        var e = this;
+        e.cursor = document.querySelector("#js-cmn-cursor");
+        e.cursor.classList.add("is-active");
+        e.cursorInner = document.querySelector("#js-cmn-cursor__inner");
+        e.a = document.querySelectorAll("a, .cmn-cursor--target");
+        e.cursorPositionX = 0;
+        e.cursorPositionY = 0;
+        e.oldCursorPositionX = 0;
+        e.oldCursorPositionY = 0;
+
+        for (var n = 0; n < e.a.length; n++) {
+          e.a[n].addEventListener("mouseenter", function () {
+            gsap.to(e.cursorInner, {
+              duration: 0.6,
+              ease: "power3.out",
+              scale: 2,
+            });
+          });
+
+          e.a[n].addEventListener("mouseleave", function () {
+            gsap.to(e.cursorInner, {
+              duration: 0.6,
+              ease: "power3.out",
+              scale: 1,
+            });
+          });
+        }
+
+        window.addEventListener(
+          "mousemove",
+          function (t) {
+            e.cursorPositionX = t.clientX;
+            e.cursorPositionY = t.clientY;
+          },
+          {
+            passive: true,
+          }
+        );
+
+        function updateCursorPosition() {
+          var newCursorPositionX = e.oldCursorPositionX - e.cursorPositionX;
+          var newCursorPositionY = e.oldCursorPositionY - e.cursorPositionY;
+          var scaleValue = Math.min(20, Math.sqrt(newCursorPositionX * newCursorPositionX + newCursorPositionY * newCursorPositionY)) / 10;
+          var rotationValue = (180 * Math.atan2(newCursorPositionY, newCursorPositionX)) / Math.PI;
+          gsap.set(e.cursor, {
+            x: e.cursorPositionX,
+            y: e.cursorPositionY,
+            scaleX: 1 + scaleValue,
+            rotation: rotationValue,
+          });
+          e.oldCursorPositionX = e.cursorPositionX;
+          e.oldCursorPositionY = e.cursorPositionY;
+          requestAnimationFrame(updateCursorPosition);
+        }
+
+        updateCursorPosition();
+      };
+      customCursor();
+    </script>
+  </body>
+</html>
