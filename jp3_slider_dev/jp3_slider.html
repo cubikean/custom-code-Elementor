@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP3 DEV SLIDER</title>
+    <style>
+        .about {
+    padding-top: 150px; }
+    @media screen and (max-width: 1440px) {
+      .about {
+        padding-top: 100px; } }
+    @media screen and (max-width: 768px) {
+      .about {
+        padding-top: 50px; } }
+    .about__container {
+      max-width: 1500px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 50px; }
+      @media screen and (max-width: 1440px) {
+        .about__container {
+          max-width: 1200px; } }
+      @media screen and (max-width: 1282px) {
+        .about__container {
+          max-width: 950px;
+          padding-bottom: 0; } }
+      @media screen and (max-width: 992px) {
+        .about__container {
+          display: none; } }
+      .about__container__left {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        height: 260vh; }
+        @media screen and (max-width: 1282px) {
+          .about__container__left {
+            height: 240vh; } }
+        .about__container__left__elements {
+          position: relative;
+          margin-bottom: 35vh; }
+          @media screen and (max-width: 1440px) {
+            .about__container__left__elements .first_patchwork {
+              position: relative;
+              width: 80%;
+              margin-left: auto; } }
+          @media screen and (max-width: 1440px) {
+            .about__container__left__elements .first_patchwork.reverse {
+              position: relative;
+              width: 75%;
+              margin-right: auto;
+              margin-left: 0; } }
+          .about__container__left__elements .first_patchwork.reverse img {
+            margin-right: auto;
+            display: flex;
+            margin-left: 0;
+            height: 95%; }
+          .about__container__left__elements .first_patchwork img {
+            margin-left: auto;
+            display: flex;
+            height: 95%; }
+          .about__container__left__elements.last {
+            margin-bottom: 0; }
+          .about__container__left__elements .second_patchwork {
+            position: absolute;
+            top: 85%; }
+            .about__container__left__elements .second_patchwork img {
+              margin-right: auto;
+              display: flex;
+              margin-left: 0;
+              width: 80%; }
+              @media screen and (max-width: 1440px) {
+                .about__container__left__elements .second_patchwork img {
+                  width: 70%; } }
+              @media screen and (max-width: 1282px) {
+                .about__container__left__elements .second_patchwork img {
+                  width: 60%; } }
+            .about__container__left__elements .second_patchwork.reverse {
+              right: 0; }
+              .about__container__left__elements .second_patchwork.reverse img {
+                margin-left: auto;
+                display: flex;
+                margin-right: 0;
+                width: 80%; }
+                @media screen and (max-width: 1440px) {
+                  .about__container__left__elements .second_patchwork.reverse img {
+                    width: 70%; } }
+                @media screen and (max-width: 1282px) {
+                  .about__container__left__elements .second_patchwork.reverse img {
+                    width: 60%; } }
+        .about__container__left__infos {
+          display: flex;
+          width: 100%;
+          height: 150px; }
+          @media screen and (max-width: 1282px) {
+            .about__container__left__infos {
+              height: 110px; } }
+      .about__container__right {
+        width: 50%; }
+        .about__container__right__text {
+          display: flex;
+          flex-direction: column;
+          padding-top: 250px;
+          padding-left: 150px; }
+          @media screen and (max-width: 1440px) {
+            .about__container__right__text {
+              padding-left: 100px; } }
+          @media screen and (max-width: 1282px) {
+            .about__container__right__text {
+              padding-top: 200px; } }
+          .about__container__right__text__counter {
+            display: flex;
+            margin: 0;
+            padding: 0; }
+            .about__container__right__text__counter li {
+              position: relative;
+              display: flex;
+              min-width: 65px;
+              height: 65px;
+              margin: 0 25px; }
+              .about__container__right__text__counter li:first-of-type {
+                margin: 0 25px 0 0; }
+              .about__container__right__text__counter li p {
+                text-align: center;
+                align-self: center;
+                margin: 0 auto; }
+              .about__container__right__text__counter li svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                fill: none;
+                stroke: #324c9b;
+                stroke-width: 0.5px;
+                height: 65px;
+                width: 65px; }
+          .about__container__right__text__paragraph {
+            margin: 50px 0;
+            position: relative;
+            height: 160px; }
+            @media screen and (max-width: 1282px) {
+              .about__container__right__text__paragraph {
+                margin: 30px 0;
+                height: 120px; } }
+            .about__container__right__text__paragraph p {
+              font-size: "Arial", sans-serif;
+              color: #0a0a0c;
+              font-size: 26px;
+              position: absolute;
+              top: 0;
+              right: 0;
+              left: 0;
+              margin: 0 auto;
+              opacity: 0;
+              transition: opacity .4s ease-in-out,transform .4s ease-in-out,-webkit-transform .4s ease-in-out;
+              transform-origin: top;
+              transform: scaleY(1.1) translateY(20%); }
+              @media screen and (max-width: 1282px) {
+                .about__container__right__text__paragraph p {
+                  font-size: 20px; } }
+              @media screen and (max-width: 992px) {
+                .about__container__right__text__paragraph p br {
+                  display: none; } }
+            .about__container__right__text__paragraph .text__active {
+              opacity: 1;
+              transition-delay: .3s;
+              -webkit-transform: scaleY(1) translateY(0);
+              transform: scaleY(1) translateY(0); }
+          .about__container__right__text__button {
+            display: flex;
+            width: 100%;
+            margin-left: -1.18em;
+            position: relative; }
+            .about__container__right__text__button .button__anim {
+              position: absolute;
+              top: 0;
+              left: 0;
+              opacity: 0;
+              transition: opacity .4s ease-in-out,transform .4s ease-in-out,-webkit-transform .4s ease-in-out;
+              transform-origin: top;
+              transform: scaleY(1.1) translateY(20%); }
+            .about__container__right__text__button .text__active {
+              opacity: 1;
+              transition-delay: .3s;
+              -webkit-transform: scaleY(1) translateY(0);
+              transform: scaleY(1) translateY(0);
+              z-index: 2; }
+    </style>
+</head>
+<body>
+
+
+    <section class="about">
+
+		<div class="about__container">
+
+			<div class="about__container__left">
+
+				<div class="about__container__left__infos">
+						<h2 class="home__title" data-scroll data-scroll-speed="0.75">title</h2>
+				</div>
+
+				<!-- <?php 
+
+					$compt = 0;
+
+					if( have_rows('patchwork') ):
+
+						while( have_rows('patchwork') ) : the_row();
+
+						$compt++;
+							$patchwork_image_1 = get_sub_field('patchwork_image_1'); 
+							$patchwork_image_2 = get_sub_field('patchwork_image_2'); ?>	
+
+
+						<?php if ($compt == 1): ?> -->
+		
+
+						<div class="about__container__left__elements circle__1">
+
+						<div class="first_patchwork">
+									<img src="https://dummyimage.com/600x400/000/fff" />
+							</div>
+
+							<div class="second_patchwork">
+									<img src="https://dummyimage.com/600x400/000/fff" />
+							</div>
+
+						</div>
+
+						<!-- <?php elseif ($compt == 2): ?> -->
+
+						<div class="about__container__left__elements circle__2">
+
+						<div class="first_patchwork reverse">
+									<img src="https://dummyimage.com/500x400/000/fff" />
+							</div>
+
+							<div class="second_patchwork reverse">
+									<img src="https://dummyimage.com/500x400/000/fff" />
+							</div>
+
+						</div>
+
+						<!-- <?php elseif ($compt == 3): ?> -->
+
+						<div class="about__container__left__elements last circle__3">
+
+						<div class="first_patchwork">
+									<img src="https://dummyimage.com/400x400/000/fff" />
+							</div>
+
+							<div class="second_patchwork">
+									<img src="https://dummyimage.com/400x400/000/fff" />
+							</div>
+
+						</div>
+
+						<!-- <?php endif; ?>
+
+
+						<?php	endwhile;
+					else :
+				endif; ?> -->
+
+				<div class="elements__end">
+				</div>
+
+
+			</div>
+
+			<div class="about__container__right">
+
+				<div class="about__container__right__text">
+
+
+					<ul class="about__container__right__text__counter">
+
+					<!-- <?php 
+
+					$compt = 0;
+
+					if( have_rows('patchwork') ):
+
+						while( have_rows('patchwork') ) : the_row();
+
+						$compt++;?> -->
+
+						<li><p>01</p>
+                        
+                            <svg
+                            xmlns:dc="http://purl.org/dc/elements/1.1/"
+                            xmlns:cc="http://creativecommons.org/ns#"
+                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns="http://www.w3.org/2000/svg"
+                            id="circle1"
+                            data-name="Calque 1"
+                            viewBox="0 0 24.68 24.81"
+                            version="1.1">
+                           <path
+                              d="M 24.3,12.36 A 11.97,11.97 0 0 1 12.33,24.33 11.97,11.97 0 0 1 0.35999966,12.36 11.97,11.97 0 0 1 12.33,0.38999939 11.97,11.97 0 0 1 24.3,12.36 Z" />
+                         </svg>
+                         </li>
+
+                         <li><p>02</p>
+                        
+                            <svg
+                            xmlns:dc="http://purl.org/dc/elements/1.1/"
+                            xmlns:cc="http://creativecommons.org/ns#"
+                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns="http://www.w3.org/2000/svg"
+                            id="circle2"
+                            data-name="Calque 2"
+                            viewBox="0 0 24.68 24.81"
+                            version="1.1">
+                           <path
+                              d="M 24.3,12.36 A 11.97,11.97 0 0 1 12.33,24.33 11.97,11.97 0 0 1 0.35999966,12.36 11.97,11.97 0 0 1 12.33,0.38999939 11.97,11.97 0 0 1 24.3,12.36 Z" />
+                         </svg>
+                         </li>
+
+                         <li><p>03</p>
+                        
+                            <svg
+                            xmlns:dc="http://purl.org/dc/elements/1.1/"
+                            xmlns:cc="http://creativecommons.org/ns#"
+                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns="http://www.w3.org/2000/svg"
+                            id="circle3"
+                            data-name="Calque 3"
+                            viewBox="0 0 24.68 24.81"
+                            version="1.1">
+                           <path
+                              d="M 24.3,12.36 A 11.97,11.97 0 0 1 12.33,24.33 11.97,11.97 0 0 1 0.35999966,12.36 11.97,11.97 0 0 1 12.33,0.38999939 11.97,11.97 0 0 1 24.3,12.36 Z" />
+                         </svg>
+                         </li>
+
+						<!-- <?php	endwhile;
+						else :
+					endif; ?> -->
+					
+					</ul>
+					
+
+					<div class="about__container__right__text__paragraph">
+
+					<!-- <?php 
+
+					$compt = 0;
+
+					if( have_rows('patchwork') ):
+
+						while( have_rows('patchwork') ) : the_row();
+
+						$compt++;
+							$patchwork_text = get_sub_field('patchwork_text'); ?> -->
+
+
+						<p class="js__1__text">text</p>
+						<p class="js__2__text">bla</p>
+						<p class="js__3__text">BLABLALBALB</p>
+
+						<!-- <?php	endwhile;
+						else :
+					endif; ?> -->
+					</div>
+					
+
+					<div class="about__container__right__text__button">
+
+						<!-- <?php 
+
+						$compt = 0;
+
+						if( have_rows('patchwork') ):
+
+							while( have_rows('patchwork') ) : the_row();
+
+							$compt++;
+								$patchwork_link = get_sub_field('patchwork_button_link');
+								$patchwork_text = get_sub_field('patchwork_button_text'); ?>
+ -->
+
+							<a href="#link" class="button__anim js__1__button">
+								<div class="button__anim__circle"></div>
+								<div class="button__anim__text">text</div>
+							</a>
+                            <a href="#link" class="button__anim js__2__button">
+								<div class="button__anim__circle"></div>
+								<div class="button__anim__text">text</div>
+							</a>
+                            <a href="#link" class="button__anim js__3__button">
+								<div class="button__anim__circle"></div>
+								<div class="button__anim__text">text</div>
+							</a>
+
+						<!-- <?php
+							endwhile;
+							else :
+						endif; ?> -->
+					</div>
+		
+				</div>
+			</div>
+		</div>
+
+		<div class="about__slider" style="display:none">
+
+			<div class="about__slider__infos">
+						<h2 class="home__title" data-scroll data-scroll-speed="0.75">title</h2>
+				</div>
+
+				<div class="swiper-container swiper-container_about">
+					<div class="swiper-wrapper swiper-wrapper_about">
+
+
+						<div class="swiper-slide swiper-slide_about" data-id="<?= $compt ?>">  
+
+							<div class="swiper-slide_about__container">
+
+								<div class="swiper-slide_about__container__first__image">
+
+									<img src="https://dummyimage.com/600x400/000/fff" />
+
+								</div>
+
+								<div class="swiper-slide_about__container__second__image reverse">
+									<img src="https://dummyimage.com/600x400/000/fff" />
+								</div>
+
+
+
+							</div>
+
+						</div>
+
+						<div class="swiper-slide swiper-slide_about" data-id="<?= $compt ?>">  
+							
+							<div class="swiper-slide_about__container">
+
+								<div class="swiper-slide_about__container__first__image">
+
+									<img src="https://dummyimage.com/600x400/000/fff" />
+
+								</div>
+
+								<div class="swiper-slide_about__container__second__image">
+									<img src="https://dummyimage.com/600x400/000/fff" />
+								</div>
+
+
+
+							</div>
+
+						</div>
+							
+					</div>
+
+					
+					 
+												
+				</div>
+
+				<div class="about__slider__text">
+
+					<div class="about__slider__text__paragraph">
+
+						<?php 
+
+						$compt = 0;
+
+						if( have_rows('patchwork') ):
+
+							while( have_rows('patchwork') ) : the_row();
+
+							$compt++;
+								$patchwork_text = get_sub_field('patchwork_text'); ?>
+
+							<?php if ($compt == 1): ?>
+								<p class="js__<?= $compt ?>__text slide__text__id text__active"  data-id="<?= $compt?>"><?= $patchwork_text ?></p>
+							<?php else: ?>
+							<p class="js__<?= $compt ?>__text slide__text__id"  data-id="<?= $compt?>"><?= $patchwork_text ?></p>
+
+							<?php endif; ?>
+
+							<?php	endwhile;
+							else :
+						endif; ?>
+					</div>
+
+					<div class="about__slider__text__button">
+
+						<?php 
+
+						$compt = 0;
+
+						if( have_rows('patchwork') ):
+
+							while( have_rows('patchwork') ) : the_row();
+
+							$compt++;
+								$patchwork_link = get_sub_field('patchwork_button_link');
+								$patchwork_text = get_sub_field('patchwork_button_text'); ?>
+
+							<?php if ($compt == 1): ?>
+								<a href="<?= $patchwork_link ?>" class="button__anim js__<?= $compt ?>__button slide__button__id text__active " data-id="<?= $compt?>">
+									<div class="button__anim__circle"></div>
+									<div class="button__anim__text"><?= $patchwork_text ?></div>
+								</a>
+							<?php else: ?>
+								<a href="<?= $patchwork_link ?>" class="button__anim js__<?= $compt ?>__button slide__button__id " data-id="<?= $compt?>">
+									<div class="button__anim__circle"></div>
+									<div class="button__anim__text"><?= $patchwork_text ?></div>
+								</a>
+							<?php endif; ?>
+
+						<?php
+							endwhile;
+							else :
+						endif; ?>
+					</div>
+
+
+					
+					
+				</div>
+				<div class="swiper-button-next-svg"><?php include("inc/arrow-after.php")?></div>
+					<div class="swiper-button-prev-svg"><?php include("inc/arrow-before.php")?></div> 
+			</div>
+			
+
+	</section>
+
+
+
+
+    <script src="../incGsap/swiper.min.js"></script>
+    <script src="../incGsap/gsap.min.js"></script>
+    <script src="../incGsap/ScrollTrigger.min.js"></script>
+    <script src="../incGsap/DrawSVGPlugin.min.js"></script>
+    <script src="../incGsap/loco.min.js"></script>
+    <script src="../incGsap/simpleParallax.min.js"></script>
+    <script src="../incGsap/SplitText.min.js"></script>
+    <script>
+        
+        svgcircle1 = document.getElementById('circle1');
+
+pathscircle1 = svgcircle1.getElementsByTagName("path");
+
+svgcircle2 = document.getElementById('circle2');
+
+pathscircle2 = svgcircle2.getElementsByTagName("path");
+
+svgcircle3 = document.getElementById('circle3');
+
+pathscircle3 = svgcircle3.getElementsByTagName("path");
+
+const about_text = document.querySelectorAll(".about__container__right__text");
+const patchwork_second_img = [...document.querySelectorAll(".second_patchwork > img")];
+
+const first_text = document.querySelector(".js__1__text");
+const second_text = document.querySelector(".js__2__text");
+const third_text = document.querySelector(".js__3__text");
+
+const first_button = document.querySelector(".js__1__button");
+const second_button = document.querySelector(".js__2__button");
+const third_button = document.querySelector(".js__3__button");
+
+gsap.set(patchwork_second_img, {
+  y:0,
+});
+
+patchwork_second_img.forEach((content, i) => {
+  gsap.to(content, {
+    y:-450,
+    ease:'power4.easeInOut',
+    scrollTrigger: {
+      trigger: content,
+      scroller: "body",
+      start: "top 100%",
+      end: "top -10%",
+      scrub: true,
+
+    }
+  });
+});
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: about_text,
+    start: "center center",
+    end: "center 85%",
+    endTrigger: ".elements__end",
+    scroller: "body",
+    scrub: true,
+    pin: true,
+    markers:true,
+  }
+});
+
+gsap.set(pathscircle1, {
+  drawSVG: "0% 0%"
+});
+
+gsap.to(pathscircle1, {
+  drawSVG: "0% 100%",
+  scrollTrigger: {
+    scroller: "body",
+    trigger: ".circle__1",
+    start: "top center",
+    end: "top -30%",
+    scrub:true,
+  }
+});
+
+gsap.set(pathscircle2, {
+  drawSVG: "0% 0%"
+});
+
+gsap.to(pathscircle2, {
+  drawSVG: "0% 100%",
+  scrollTrigger: {
+    scroller: "body",
+    trigger: ".circle__2",
+    start: "top 65%",
+    end: "top -15%",
+    scrub:true,
+  }
+});
+
+gsap.set(pathscircle3, {
+  drawSVG: "0% 0%"
+});
+
+gsap.to(pathscircle3, {
+  drawSVG: "0% 100%",
+  scrollTrigger: {
+    scroller: "body",
+    trigger: ".circle__3",
+    start: "top 86.5%",
+    end: "top 25%",
+    scrub:true,
+  }
+});
+
+gsap.to(first_text, {
+  scrollTrigger: {
+    trigger: ".circle__1",
+    scroller: "body",
+    start: "top 120%",
+    end: "top -10%",
+    onEnter: () => add__first__text(),
+    onLeave: () => remove__first__text(),
+    onEnterBack: () => add__first__text(),
+    onLeaveBack: () => remove__first__text(),
+  }
+});
+
+gsap.to(second_text, {
+  scrollTrigger: {
+    trigger: ".circle__2",
+    scroller: "body",
+    start: "top 85%",
+    end: "top -10%",
+    onEnter: () => add__second__text(),
+    onLeave: () => remove__second__text(),
+    onEnterBack: () => add__second__text(),
+    onLeaveBack: () => remove__second__text(),
+  }
+});
+
+gsap.to(third_text, {
+  scrollTrigger: {
+    trigger: ".circle__3",
+    scroller: "body",
+    start: "top 85%",
+    end: "top -55%",
+    onEnter: () => add__third__text(),
+    onLeave: () => remove__third__text(),
+    onEnterBack: () => add__third__text(),
+    onLeaveBack: () => remove__third__text(),
+  }
+});
+
+function add__first__text() {
+  first_text.classList.add('text__active')
+  first_button.classList.add('text__active')
+}
+
+function remove__first__text() {
+  first_text.classList.remove('text__active')
+  first_button.classList.remove('text__active')
+}
+
+function add__second__text() {
+  second_text.classList.add('text__active')
+  second_button.classList.add('text__active')
+}
+
+function remove__second__text() {
+  second_text.classList.remove('text__active')
+  second_button.classList.remove('text__active')
+}
+
+function add__third__text() {
+  third_text.classList.add('text__active')
+  third_button.classList.add('text__active')
+}
+
+function remove__third__text() {
+  third_text.classList.remove('text__active')
+  third_button.classList.remove('text__active')
+}
+
+    </script>
+</body>
+</html>

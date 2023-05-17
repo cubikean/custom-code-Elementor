@@ -48,16 +48,29 @@
     <div class="mouse_border"></div>
     <div class="mouse_inner"></div>
     <a href="#">lzpdlzpdlpz</a>
+    
 
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       const cursor = document.querySelector(".mouse_border");
       const cursorinner = document.querySelector(".mouse_inner");
-      const a = document.querySelectorAll('a')
+      const a = document.querySelectorAll('a');
+      const cursorPositionX = 0;
+      const cursorPositionY = 0;
+      const oldCursorPositionX = 0;
+      const oldCursorPositionY = 0;
+
+      const newX = oldCursorPositionX - cursorPositionX
+      const newY = oldCursorPositionY - cursorPositionY
+      const R = Math.min(20, Math.sqrt(newX * newX + newY * newY)) / 10
+      const I = 180 * Math.atan2(newY, newX) / Math.PI;
 
       document.addEventListener("mousemove", function (e) {
         var x = e.clientX;
         var y = e.clientY;
-        cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+        // cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
       });
 
       document.addEventListener("mousemove", function (e) {
@@ -102,15 +115,18 @@
           var movementX = Math.abs(currentEvent.screenX - prevEvent.screenX);
           var movementY = Math.abs(currentEvent.screenY - prevEvent.screenY);
           var movement = Math.sqrt(
-            movementX * movementX + movementY * movementY
+            Math.min(20, Math.sqrt(movementX * movementX + movementY * movementY)) / 10
           );
+          var rotateTest = 180 * Math.atan2(movementY, movementX) / Math.PI;
 
           //speed=movement/100ms= movement/0.1s= 10*movement/s
           var speed = 10 * movement; //current speed
           var acceleration = 10 * (speed - prevSpeed);
-          console.log(acceleration);
-          cursor.style.width = 30 + movementX / 5 + "px";
-          cursor.style.height = 30 + movementY / 5 + "px";
+          console.log(movement)
+          // console.log(acceleration);
+          cursorinner.style.transform = `scaleX(${1 + movement}) rotate(${rotateTest}deg)`;
+          // cursor.style.transform = ;
+          // cursor.style.transform = ``;
         }
 
         prevEvent = currentEvent;

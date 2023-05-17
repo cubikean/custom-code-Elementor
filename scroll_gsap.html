@@ -27,6 +27,10 @@
   <section class="panel">THREE</section>
 </div>
 
+<div class="cmn-cursor is-active" id="js-cmn-cursor">
+  <div class="cmn-cursor__inner" id="js-cmn-cursor__inner"></div>
+</div>
+
 <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -57,6 +61,63 @@
     .to(container, { duration: 1, backgroundColor: "#EEBDCD", ease: "none" })
     .to(container, { duration: 1, backgroundColor: "#CC2634", ease: "none" })
     .to(container, { duration: 1, backgroundColor: "#FF00FF", ease: "none" });
+
+    var a = function t() {
+            var e = this;
+            if (function(t, e) {
+                if (!(t instanceof e))
+                    throw new TypeError("Cannot call a class as a function")
+            }(this, t),
+            !CheckDevice.isTouch()) {
+                this.$cursor = document.querySelector("#js-cmn-cursor"),
+                this.$cursor.classList.add("is-active"),
+                this.$cursorInner = document.querySelector("#js-cmn-cursor__inner"),
+                this.$a = document.querySelectorAll("a, .cmn-cursor--target"),
+                this.cursorPositionX = 0,
+                this.cursorPositionY = 0,
+                this.oldCursorPositionX = 0,
+                this.oldCursorPositionY = 0;
+                for (var n = 0; n < this.$a.length; n++)
+                    this.$a[n].addEventListener("mouseenter", (function() {
+                        gsap.to(e.$cursorInner, {
+                            duration: .6,
+                            ease: "power3.out",
+                            scale: 2
+                        })
+                    }
+                    )),
+                    this.$a[n].addEventListener("mouseleave", (function() {
+                        gsap.to(e.$cursorInner, {
+                            duration: .6,
+                            ease: "power3.out",
+                            scale: 1
+                        })
+                    }
+                    ));
+                window.addEventListener("mousemove", (function(t) {
+                    e.cursorPositionX = t.clientX,
+                    e.cursorPositionY = t.clientY
+                }
+                ), {
+                    passive: !0
+                });
+                !function t() {
+                    var n = e.oldCursorPositionX - e.cursorPositionX
+                      , o = e.oldCursorPositionY - e.cursorPositionY
+                      , r = Math.min(20, Math.sqrt(n * n + o * o)) / 10
+                      , i = 180 * Math.atan2(o, n) / Math.PI;
+                    gsap.set(e.$cursor, {
+                        x: e.cursorPositionX,
+                        y: e.cursorPositionY,
+                        scaleX: 1 + r,
+                        rotation: i
+                    }),
+                    e.oldCursorPositionX = e.cursorPositionX,
+                    e.oldCursorPositionY = e.cursorPositionY,
+                    requestAnimationFrame(t)
+                }()
+            }
+        };
 </script>
 
  <!-- 
