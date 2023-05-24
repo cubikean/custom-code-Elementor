@@ -3,31 +3,29 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 value = [
-"au-dela-des-grilles","au-seuil-de-lislam","barrage-contre-le-pacifique","bataille-du-rail","cesar-et-les-gaulois","ceux-du-rail","chefs-de-demain","evasion","gervaise","jeux-interdits","la-baby-sitter","la-belle-et-la-bete","la-bievre","la-boite-aux-reves","la-course-du-lievre-a-travers-les-champs","la-grande-chartreuse","la-grande-pastorale","la-maison-sous-les-arbres","la-symphonie-francaise-du-travail","larabie-interdite","le-chateau-de-verre","le-jour-et-lheure","le-passager-de-la-pluie","le-pere-tranquille","le-triage-de-trappes","les-felins","les-maudits","manoeuvres-de-tanks-en-temps-de-guerre","monsieur-ripois","occitanie","paris-brule-t-il","plein-soleil","quelle-joie-de-vivre","soigne-ton-gauche","toulouse","venus-aveugle",
+"9004/bio","9008/saisons","9010/2015","9061/figaro-2", "11664/class-40","11687/figaro-3" , "9007/les-partenaires", "9012/medias", "9016/photo", "9017/videos", "9999/presse", "9025/contact",
 ]
 for i in range(len(value)):
-    url = "http://fondationreneclement.fr/filmographie/"+ value[i] +"/"
-
+    url = "http://julienpulve.com/s/"+ value[i]
     html = urlopen(url).read()
     soup = BeautifulSoup(html, features="html.parser")
 
     # kill all script and style elements
-    for script in soup(["script", "style", "nav", "header", "div", "section", "footer", "h1"]):
+    for script in soup(["script", "style", "nav", "header", "div", "section", "footer", "h1", "h2", "h3", "h4", "h5", "h6"]):
         if 'class' in script.attrs:
-            if "mkdf-page-header" in script.attrs['class']:
+            if "navbar" in script.attrs['class']:
                 script.extract()    # rip it out
-            if "mkdf-mobile-header" in script.attrs['class']:
-                script.extract()    # rip it out
-            if "section_mission_palmares" in script.attrs['class']:
-                script.extract()    # rip it out
-            if "mkdf-side-menu" in script.attrs['class']:
-                script.extract()    # rip it out
-            if "mkdf-page-footer" in script.attrs['class']:
-                script.extract()    # rip it out
-            if "bouton_or" in script.attrs['class']:
-                script.extract()    # rip it out
-            if "titre_h1_or" in script.attrs['class']:
-                script.extract()    # rip it out
+        # if 'id' in script.attrs:
+        #     if "line-4" in script.attrs['id']:
+        #         script.extract()    # rip it out
+        #     if "line-5" in script.attrs['id']:
+        #         script.extract()    # rip it out
+        #     if "line-6" in script.attrs['id']:
+        #         script.extract()    # rip it out
+        #     if "line-7" in script.attrs['id']:
+        #         script.extract()    # rip it out
+        #     if "cookiesAccept" in script.attrs['id']:
+        #         script.extract()    # rip it out
 
     # get text
     text = soup.get_text()
@@ -41,6 +39,8 @@ for i in range(len(value)):
 
     print(text)
 
-    with open(value[i]+'.txt', 'x') as f:
+    
+
+    with open(value[i].replace("/","_")+'.txt', 'x') as f:
         f.write(text)
     # sleep(2)
