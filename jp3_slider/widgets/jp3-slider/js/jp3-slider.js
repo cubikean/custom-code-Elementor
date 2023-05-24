@@ -1,24 +1,4 @@
-  svgcircle1 = document.getElementById('circle1');
 
-  
-  if (svgcircle1){
-
-    pathscircle1 = svgcircle1.getElementsByTagName("path");
-  }
-  
-  svgcircle2 = document.getElementById('circle2');
-
-  if (svgcircle2) {
-    pathscircle2 = svgcircle2.getElementsByTagName("path");
-  }
-  
-  
-svgcircle3 = document.getElementById('circle3');
-
-if (svgcircle3){
-
-  pathscircle3 = svgcircle3.getElementsByTagName("path");
-}
 
 const about_text = document.querySelectorAll(".about__container__right__text");
 const about_text_parapgraph = document.querySelector('.about__container__right__text__paragraph')
@@ -53,8 +33,8 @@ patchwork_second_img.forEach((content, i) => {
 gsap.timeline({
   scrollTrigger: {
     trigger: about_text,
-    start: "center center",
-    end: "center 85%",
+    start: "center 40%",
+    end: "center bottom",
     endTrigger: ".elements__end",
     scroller: "body",
     scrub: true,
@@ -62,152 +42,100 @@ gsap.timeline({
   }
 });
 
-if (svgcircle1 && pathscircle1 ){
-
-
-gsap.set(pathscircle1, {
-  drawSVG: "0% 0%"
-});
-
-gsap.to(pathscircle1, {
-  drawSVG: "0% 100%",
-  scrollTrigger: {
-    scroller: "body",
-    trigger: ".circle__1",
-    start: "top center",
-    end: "top -30%",
-    scrub:true,
+function animatePath(pathCircle, triggerClass, start, end) {
+  if (pathCircle) {
+    gsap.set(pathCircle, {
+      drawSVG: "0% 0%"
+    });
+    
+    gsap.to(pathCircle, {
+      drawSVG: "0% 100%",
+      scrollTrigger: {
+        scroller: "body",
+        trigger: triggerClass,
+        start: start,
+        end: end,
+        scrub: true,
+      }
+    });
   }
-});
-
 }
 
-if (svgcircle2 && pathscircle2 ){
+const pathscircle1 = document.querySelector('#circle1 path')
+const pathscircle2 = document.querySelector('#circle2 path')
+const pathscircle3 = document.querySelector('#circle3 path')
 
-gsap.set(pathscircle2, {
-  drawSVG: "0% 0%"
-});
+animatePath(pathscircle1, ".circle__1", "top center", "top -30%");
+animatePath(pathscircle2, ".circle__2", "top 65%", "top -15%");
+animatePath(pathscircle3, ".circle__3", "top 86.5%", "top 25%");
 
-gsap.to(pathscircle2, {
-  drawSVG: "0% 100%",
-  scrollTrigger: {
-    scroller: "body",
-    trigger: ".circle__2",
-    start: "top 65%",
-    end: "top -15%",
-    scrub:true,
-  }
-});
-}
 
-if (svgcircle3 && pathscircle3 ){
-
-  gsap.set(pathscircle3, {
-    drawSVG: "0% 0%"
-  });
-  
-  gsap.to(pathscircle3, {
-    drawSVG: "0% 100%",
+function animateText(text, circleClass, start, end, index) {
+  gsap.to(text, {
     scrollTrigger: {
+      trigger: circleClass,
       scroller: "body",
-      trigger: ".circle__3",
-      start: "top 86.5%",
-      end: "top 25%",
-      scrub:true,
+      start: start,
+      end: end,
+      onEnter: () => {addText(text, index), resizeParagraph(text), colorTitle(index)},
+      onLeave: () => {removeText(text, index), removeColorTitle(index)},
+      onEnterBack: () => {addText(text, index), resizeParagraph(text), colorTitle(index)},
+      onLeaveBack: () => {removeText(text, index), removeColorTitle(index)},
     }
   });
 }
 
-if (first_text){
-
-  
-  gsap.to(first_text, {
-    scrollTrigger: {
-      trigger: ".circle__1",
-      scroller: "body",
-      start: "top 120%",
-      end: "top -10%",
-      onEnter: () => {add__first__text() ,resize_paragraph(first_text)}, 
-      onLeave: () => remove__first__text(),
-      onEnterBack: () => {add__first__text() ,resize_paragraph(first_text)}, 
-      onLeaveBack: () => remove__first__text(),
-    }
-  });
+if (first_text) {
+  animateText(first_text, ".circle__1",  "top 120%", "top -10%", 1);
 }
 
-if (second_text){
-  
-  gsap.to(second_text, {
-    scrollTrigger: {
-      trigger: ".circle__2",
-      scroller: "body",
-      start: "top 85%",
-      end: "top -10%",
-      onEnter: () => {add__second__text() ,resize_paragraph(second_text)}, 
-      onLeave: () => remove__second__text(),
-      onEnterBack: () => {add__second__text() ,resize_paragraph(second_text)},
-      onLeaveBack: () => remove__second__text(),
-    }
-  });
-}
-if (third_text ){
-
-gsap.to(third_text, {
-  scrollTrigger: {
-    trigger: ".circle__3",
-    scroller: "body",
-    start: "top 85%",
-    end: "top -55%",
-    onEnter: () => {add__third__text(), resize_paragraph(third_text)},
-    onLeave: () => remove__third__text(),
-    onEnterBack: () => {add__third__text(), resize_paragraph(third_text)},
-    onLeaveBack: () => remove__third__text(),
-  }
-});
+if (second_text) {
+  animateText(second_text, ".circle__2", "top 70%", "top -10%", 2);
 }
 
-function add__first__text() {
-  first_text.classList.add('text__active')
-  first_button.classList.add('text__active')
+if (third_text) {
+  animateText(third_text, ".circle__3", "top 85%", "top -55%", 3);
 }
 
-function remove__first__text() {
-  first_text.classList.remove('text__active')
-  first_button.classList.remove('text__active')
+function addText(text, index) {
+  text.classList.add('text__active')
+  document.querySelector(`.js__${index}__button`).classList.add('text__active')
 }
 
-function add__second__text() {
-  second_text.classList.add('text__active')
-  second_button.classList.add('text__active')
+function removeText(text, index) {
+  console.log('leave')
+  text.classList.remove('text__active')
+  document.querySelector(`.js__${index}__button`).classList.remove('text__active')
 }
 
-function remove__second__text() {
-  second_text.classList.remove('text__active')
-  second_button.classList.remove('text__active')
-}
-
-function add__third__text() {
-  third_text.classList.add('text__active')
-  third_button.classList.add('text__active')
-}
-
-function remove__third__text() {
-  third_text.classList.remove('text__active')
-  third_button.classList.remove('text__active')
-}
-function resize_paragraph(element){
+function resizeParagraph(element){
   about_text_parapgraph.style.height = `${element.clientHeight}px`
-  console.log(element.clientHeight)
+}
+
+function colorTitle(id){
+  const currentId = document.querySelector(`[data-title-id="${id}"] a`)
+  if (currentId){
+    currentId.style.color = 'var(--orange)';
+    currentId.classList.add('active')
+  }
+}
+
+function removeColorTitle(id){
+  const currentId = document.querySelector(`[data-title-id="${id}"] a`)
+  if (currentId){
+    currentId.style.color = '#DBDBDB';
+    currentId.classList.remove('active')
+  }
 }
 
 ////////////////////////////////////////////////////////////////////// SWIPER CAROUSEL FOR CUSTOM SLIDER////////////////////////////////////////////////////////////////////
 if (window.matchMedia("(max-width: 992px)").matches) {
 var swiperabout = new Swiper(".swiper-container_about", {
   spaceBetween: 30,
-  centeredSlides: true,
+  // centeredSlides: true,
   // initialSlide: 0,
   // effect: "fade",
-  // slidesPerView: 0,
+  // slidesPerView: 1,
   // slidesPerGroup: 1,
   // spaceBetween: 60,
   loop:true,
@@ -224,39 +152,99 @@ var swiperabout = new Swiper(".swiper-container_about", {
 });
 
 
-swiperabout.on('slideChange', function()  {
+// swiperabout.on('slideChange', function()  {
 
 
-  const slide_visible_about = document.querySelectorAll('.swiper-slide_about');
+//   const slide_visible_about = document.querySelectorAll('.swiper-slide_about');
 
-  const activeElSlide = Array.prototype.find.call (slide_visible_about, item => item.classList.contains('swiper-slide-active'));
+//   const activeElSlide = Array.prototype.find.call (slide_visible_about, item => item.classList.contains('swiper-slide-active'));
 
-  const idActiveSlide = activeElSlide.getAttribute('data-id');
+//   const idActiveSlide = activeElSlide.getAttribute('data-id');
 
-  const slide_visible_text = document.querySelectorAll('.slide__text__id');
+//   const slide_visible_text = document.querySelectorAll('.slide__text__id');
 
-  const slide_visible_button = document.querySelectorAll('.slide__button__id');
+//   const slide_visible_button = document.querySelectorAll('.slide__button__id');
 
-  
 
-  slide_visible_text.forEach((element) => {
-    const slideVisibleTextEl = element.getAttribute('data-id');
-    if (idActiveSlide === slideVisibleTextEl) {
-      element.classList.add('text__active');
-    } else {
-      element.classList.remove('text__active');
-    }
-  });
+//   slide_visible_text.forEach((element) => {
+//     const slideVisibleTextEl = element.getAttribute('data-id');
+//     if (idActiveSlide === slideVisibleTextEl) {
+//       element.classList.add('text__active');
+//     } else {
+//       element.classList.remove('text__active');
+//     }
+//   });
 
-  slide_visible_button.forEach((element) => {
-    const slideVisibleButtonEl = element.getAttribute('data-id');
-    if (idActiveSlide === slideVisibleButtonEl) {
-      element.classList.add('text__active');
-    } else {
-      element.classList.remove('text__active');
-    }
-  });
+//   slide_visible_button.forEach((element) => {
+//     const slideVisibleButtonEl = element.getAttribute('data-id');
+//     if (idActiveSlide === slideVisibleButtonEl) {
+//       element.classList.add('text__active');
+//     } else {
+//       element.classList.remove('text__active');
+//     }
+//   });
+// });
+
+// let activeText = document.querySelector('.text__active')
+
+// resize_paragraph_swiper(activeText)
+
+
+
+const swiperNext = document.querySelector('.swiper-button-next-svg')
+const swiperPrev = document.querySelector('.swiper-button-prev-svg')
+
+// init height of paragraph container
+gsap.to(swiperNext, {
+  scrollTrigger: {
+    trigger: swiperNext,
+    scroller: "body",
+    start: "top bottom",
+    end: "top bottom",
+    onEnter: () => resize_paragraph_swiper(), 
+  }
 });
+
+
+swiperNext.addEventListener('click', ()=>{
+  let textActive = document.querySelector('.text__active')
+  if (textActive.nextElementSibling !== null){
+    removeActive()
+    textActive.nextElementSibling.classList.add('text__active')
+    resize_paragraph_swiper()
+  } else {
+    removeActive()
+    document.querySelector('.js__1__text[data-id="1"]').classList.add('text__active')
+    resize_paragraph_swiper()
+  }
+})
+
+swiperPrev.addEventListener('click', ()=>{
+  let textActive = document.querySelector('.text__active')
+  if (textActive.previousElementSibling !== null){
+    removeActive()
+    textActive.previousElementSibling.classList.add('text__active')
+    resize_paragraph_swiper()
+  } else {
+    removeActive()
+    document.querySelector('.js__3__text[data-id="3"]').classList.add('text__active')
+    resize_paragraph_swiper()
+  }
+})
+
+
+function removeActive(){
+  let textActive = document.querySelector('.text__active')
+  textActive.classList.remove('text__active')
+}
+
+
+function resize_paragraph_swiper(){
+  let textActive = document.querySelector('.text__active')
+  const about_text_parapgraph_swiper = document.querySelector('.about__slider__text__paragraph')
+  about_text_parapgraph_swiper.style.height = `${textActive.clientHeight}px`
+  // console.log(textActive.clientHeight)
+}
 
 const swiperAboutSlide = document.querySelector('.swiper-container_about')
 swiperAboutSlide.addEventListener('mouseenter', function() {

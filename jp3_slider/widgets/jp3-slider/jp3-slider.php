@@ -71,7 +71,17 @@ class Jp3_Slider extends Widget_Base {
 		);
 
 		
+
+		
 		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'title',
+			[
+				'label' => __('Titre : (chiffres si vide)', 'jp3-slider' ),
+				'type'  => \Elementor\Controls_Manager::TEXT,
+			]
+		);
 
 		$repeater->add_control(
 			'imageContent',
@@ -105,6 +115,219 @@ class Jp3_Slider extends Widget_Base {
 				'input_type' => 'wysiwyg',
 				'dynamic' => [
 					'active' => true,
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'switch',
+			[
+				'label' => esc_html__( 'Icons', 'jp3-slider' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+			]
+		);
+
+		$repeater->add_control(
+			'Icon1',
+			[
+				'label' => __('Icon 1', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'condition' => [
+					'switch' => 'yes',
+				],
+
+			]
+		);
+
+		$repeater->add_control(
+			'Icon1Title',
+			[
+				'label' => __('Titre', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'Icon1Text',
+			[
+				'label' => __('Texte', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'input_type' => 'wysiwyg',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'Icon2',
+			[
+				'label' => __('Icon 2', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'condition' => [
+					'switch' => 'yes',
+				],
+
+			]
+		);
+
+		$repeater->add_control(
+			'Icon2Title',
+			[
+				'label' => __('Titre', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'Icon2Text',
+			[
+				'label' => __('Texte', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'input_type' => 'wysiwyg',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'Icon3',
+			[
+				'label' => __('Icon 3', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'condition' => [
+					'switch' => 'yes',
+				],
+
+			]
+		);
+
+		$repeater->add_control(
+			'Icon3Title',
+			[
+				'label' => __('Titre', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'Icon3Text',
+			[
+				'label' => __('Texte', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'input_type' => 'wysiwyg',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'Icon4',
+			[
+				'label' => __('Icon 4', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'condition' => [
+					'switch' => 'yes',
+				],
+
+			]
+		);
+
+		$repeater->add_control(
+			'Icon4Title',
+			[
+				'label' => __('Titre', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'Icon4Text',
+			[
+				'label' => __('Texte', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'input_type' => 'wysiwyg',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'Icon5',
+			[
+				'label' => __('Icon 5', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'condition' => [
+					'switch' => 'yes',
+				],
+
+			]
+		);
+
+		$repeater->add_control(
+			'Icon5Title',
+			[
+				'label' => __('Titre', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'input_type' => 'text',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'Icon5Text',
+			[
+				'label' => __('Texte', 'jp3-slider'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'input_type' => 'wysiwyg',
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'switch' => 'yes',
 				],
 			]
 		);
@@ -171,7 +394,7 @@ class Jp3_Slider extends Widget_Base {
 			
 
 				<!-- 1 -->
-				<div class="about__container__left__elements circle__<?= $count ?>">
+				<div id="about__id__<?= $count ?>" class="about__container__left__elements circle__<?= $count ?>">
 
 					<div class="first_patchwork">
 						<img src="<?= $item['imageContent']['url'] ?>" />
@@ -205,8 +428,17 @@ class Jp3_Slider extends Widget_Base {
 				<?php foreach ($settings['list'] as $index => $item) { ?>
 			
 					<li>
-						<p>0<?= $count; ?></p>
-					
+						<?php if ($item['title'] != null) : ?>
+						<h3 class="about__container__title" data-title-id="<?= $count ?>">
+							<a href="#about__id__<?= $count ?>"><?= $item['title'] ?></a>
+						</h3>
+
+						<?php else : ?>
+							
+						<p>
+							<a href="#about__id__<?= $count ?>">0<?= $count; ?></a>
+						</p>
+						
 						<svg
 							xmlns:dc="http://purl.org/dc/elements/1.1/"
 							xmlns:cc="http://creativecommons.org/ns#"
@@ -219,6 +451,8 @@ class Jp3_Slider extends Widget_Base {
 							version="1.1">
 							<path d="M 24.3,12.36 A 11.97,11.97 0 0 1 12.33,24.33 11.97,11.97 0 0 1 0.35999966,12.36 11.97,11.97 0 0 1 12.33,0.38999939 11.97,11.97 0 0 1 24.3,12.36 Z" />
 						</svg>
+						<?php endif; ?>
+
 					</li>
 				
 				<?php $count = $count + 1;}}?>
@@ -233,8 +467,62 @@ class Jp3_Slider extends Widget_Base {
 				<?php $count = 1 ?>
 
 				<?php foreach ($settings['list'] as $index => $item) { ?>
-			
+					<?php if($item['switch'] == "") : ?>
+
 					<p class="js__<?= $count; ?>__text"><?= $item['content'] ?></p>
+
+					<?php else : ?>
+						<div class="about__container__right__pictos__container js__<?= $count; ?>__text">
+						<?php if (!empty($item['Icon1']['url'])) : ?>
+							<div class="about__container__right__pictos">
+								<img src="<?= $item['Icon1']['url'] ?>" alt="" class="picto__image">
+								<div class="picto__container__text">
+									<p class="picto__title"><?= $item['Icon1Title'] ?></p>
+									<p class="picto__text"><?= $item['Icon1Text'] ?></p>
+								</div>
+							</div>
+						<?php endif ; ?>
+						<?php if (!empty($item['Icon2']['url'])) : ?>
+							<div class="about__container__right__pictos">
+								<img src="<?= $item['Icon2']['url'] ?>" alt="" class="picto__image">
+								<div class="picto__container__text">
+									<p class="picto__title"><?= $item['Icon2Title'] ?></p>
+									<p class="picto__text"><?= $item['Icon2Text'] ?></p>
+								</div>
+							</div>
+						<?php endif ; ?>
+						<?php if (!empty($item['Icon3']['url'])) : ?>
+							<div class="about__container__right__pictos">
+								<img src="<?= $item['Icon3']['url'] ?>" alt="" class="picto__image">
+								<div class="picto__container__text">
+									<p class="picto__title"><?= $item['Icon3Title'] ?></p>
+									<p class="picto__text"><?= $item['Icon3Text'] ?></p>
+								</div>
+							</div>
+						<?php endif ; ?>
+						<?php if (!empty($item['Icon4']['url'])) : ?>
+							<div class="about__container__right__pictos">
+								<img src="<?= $item['Icon4']['url'] ?>" alt="" class="picto__image">
+								<div class="picto__container__text">
+									<p class="picto__title"><?= $item['Icon4Title'] ?></p>
+									<p class="picto__text"><?= $item['Icon4Text'] ?></p>
+								</div>
+							</div>
+						<?php endif ; ?>
+						<?php if (!empty($item['Icon5']['url'])) : ?>
+							<div class="about__container__right__pictos">
+								<img src="<?= $item['Icon5']['url'] ?>" alt="" class="picto__image">
+								<div class="picto__container__text">
+									<p class="picto__title"><?= $item['Icon5Title'] ?></p>
+									<p class="picto__text"><?= $item['Icon5Text'] ?></p>
+								</div>
+							</div>
+						<?php endif ; ?>
+						</div>
+						
+
+					<?php endif ; ?>
+
 
 				
 				<?php $count = $count + 1;}}?>
@@ -251,11 +539,16 @@ class Jp3_Slider extends Widget_Base {
 				<?php $count = 1 ?>
 
 				<?php foreach ($settings['list'] as $index => $item) { ?>
-			
-					<a href="<?= $item['link']['url'] ?>" class="button__anim js__<?= $count; ?>__button">
-						<div class="button__anim__circle"></div>
-						<div class="button__anim__text">en savoir plus</div>
-					</a>
+
+					<?php if($item['switch'] == "") : ?>
+
+						<a href="<?= $item['link']['url'] ?>" class="button__anim js__<?= $count; ?>__button">
+							<div class="button__anim__circle"></div>
+							<div class="button__anim__text">En savoir +</div>
+						</a>
+						
+					<?php endif ; ?>
+
 
 				
 				<?php $count = $count + 1;}}?>
@@ -326,12 +619,12 @@ class Jp3_Slider extends Widget_Base {
 								<?php if ($count == 1): ?>
 									<a href="<?= $item['link']['url'] ?>" class="button__anim js__<?= $count ?>__button slide__button__id text__active " data-id="<?= $count?>">
 										<div class="button__anim__circle"></div>
-										<div class="button__anim__text">en savoir plus</div>
+										<div class="button__anim__text">En savoir +</div>
 									</a>
 								<?php else: ?>
 									<a href="<?= $item['link']['url'] ?>" class="button__anim js__<?= $count ?>__button slide__button__id " data-id="<?= $count?>">
 										<div class="button__anim__circle"></div>
-										<div class="button__anim__text">en savoir plus</div>
+										<div class="button__anim__text">En savoir +</div>
 									</a>
 								<?php endif; ?>
 							
@@ -342,8 +635,22 @@ class Jp3_Slider extends Widget_Base {
 					
 					
 				</div>
-				<div class="swiper-button-next-svg"> next </div>
-				<div class="swiper-button-prev-svg"> prev </div> 
+				<div class="swiper-button-next-svg">
+				<svg id="after" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104.31 104.36">
+<polyline class="line" points="44.66 32.79 59.48 52.5 44.66 72.63"/>
+<circle cx="52.07" cy="52.33" r="50"/>
+</svg>
+
+
+				</div>
+				<div class="swiper-button-prev-svg">
+				<svg id="previous" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104.31 104.36">
+<polyline class="line" points="59.48 71.88 44.66 52.17 59.48 32.04"/>
+<circle cx="52.07" cy="52.33" r="50"/>
+</svg>
+
+
+				</div> 
 		</div>
 	
 

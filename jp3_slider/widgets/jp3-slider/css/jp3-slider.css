@@ -1,8 +1,8 @@
 h2.home__title {
-  color: #2238d9;
+  color: var(--orange);
   font-family: "Arial", sans-serif;
   font-size: 135px;
-  -webkit-text-stroke: 1px #2238d9;
+  -webkit-text-stroke: 1px var(--orange);
   color: transparent;
   position: relative;
   z-index: 1;
@@ -65,11 +65,11 @@ h2.home__title {
   display: flex;
   flex-direction: column;
   height: 100%;
-  height: 260vh;
+  height: auto;
 }
 @media screen and (max-width: 1282px) {
   .about__container__left {
-    height: 240vh;
+    height: auto;
   }
 }
 .about__container__left__elements {
@@ -162,6 +162,7 @@ h2.home__title {
   flex-direction: column;
   padding-top: 250px;
   padding-left: 150px;
+  left: inherit !important;
 }
 @media screen and (max-width: 1440px) {
   .about__container__right__text {
@@ -184,6 +185,7 @@ h2.home__title {
   min-width: 65px;
   height: 65px;
   margin: 0 25px;
+  width: max-content;
 }
 .about__container__right__text__counter li:first-of-type {
   margin: 0 25px 0 0;
@@ -192,6 +194,49 @@ h2.home__title {
   text-align: center;
   align-self: center;
   margin: 0 auto;
+  font-size: 20px;
+  font-family: "Arial Unicode MS", sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about__container__right__text__counter li h3 {
+  text-align: center;
+  align-self: center;
+  margin: 0 auto;
+  font-size: 32px;
+  font-family: "Arial Unicode MS", sans-serif;
+  width: max-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about__container__right__text__counter li h3 a {
+  color: #DBDBDB;
+  width: max-content;
+  position: relative;
+}
+.about__container__right__text__counter li h3 a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 30px;
+  background-color: var(--orange);
+  transition: all .3s ease-in-out;
+}
+.about__container__right__text__counter li h3 a.active::after {
+  content: "";
+  width: 50px;
+}
+
+.about__container__right__text__counter li p a {
+  color: black;
 }
 .about__container__right__text__counter li svg {
   position: absolute;
@@ -201,26 +246,27 @@ h2.home__title {
   left: 0;
   margin: auto;
   fill: none;
-  stroke: #324c9b;
+  stroke: var(--orange);
   stroke-width: 0.5px;
   height: 65px;
   width: 65px;
+  pointer-events: none;
 }
 .about__container__right__text__paragraph {
-  margin: 50px 0;
+  margin: 24px 0;
   position: relative;
   height: 160px;
 }
 @media screen and (max-width: 1282px) {
   .about__container__right__text__paragraph {
-    margin: 30px 0;
+    margin: 20px 0;
     height: 120px;
   }
 }
-.about__container__right__text__paragraph p {
-  font-size: "Arial", sans-serif;
+.about__container__right__text__paragraph > p, .about__container__right__text__paragraph .about__container__right__pictos__container {
+  font-family: "Arial Unicode MS", sans-serif;
   color: #0a0a0c;
-  font-size: 26px;
+  font-size: 18px;
   position: absolute;
   line-height: 1.2;
   top: 0;
@@ -253,6 +299,7 @@ h2.home__title {
   display: flex;
   width: 100%;
   position: relative;
+  margin-left: -14px;
 }
 .about__container__right__text__button .button__anim {
   position: absolute;
@@ -270,6 +317,38 @@ h2.home__title {
   -webkit-transform: scaleY(1) translateY(0);
   transform: scaleY(1) translateY(0);
   z-index: 2;
+}
+
+.about__container__right__pictos__container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__container__right__pictos{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.about__container__right__pictos .picto__container__text{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.about__container__right__pictos .picto__container__text p{
+  font-family: "Arial", sans-serif;
+  color: #0a0a0c;
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  width: max-content;
+}
+.about__container__right__pictos .picto__container__text p.picto__title{
+  font-weight: 700;
 }
 
 /* CSS FOR THE SLIDER */
@@ -341,7 +420,7 @@ h2.home__title {
 .about__slider__text__paragraph p {
   font-size: "Arial", sans-serif;
   color: #0a0a0c;
-  font-size: 26px;
+  font-size: 18px;
   position: absolute;
   top: 0;
   right: 0;
@@ -490,6 +569,81 @@ h2.home__title {
   .about__slider .swiper-container_about {
     max-width: 300px;
   }
+}
+.about__slider .swiper-button-next-svg {
+  right: -7%;
+  left: auto;
+  position: absolute;
+  top: 150px;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  transition: 0.5s all ease-in-out;
+  z-index: 5;
+}
+.about__slider .swiper-button-next-svg:hover #after {
+  stroke: var(--orange);
+  transition: 0.5s all ease-in-out;
+}
+.about__slider .swiper-button-next-svg:hover #after .line {
+  stroke: var(--orange);
+  transition: 0.5s all ease-in-out;
+}
+.about__slider .swiper-button-next-svg #after {
+  fill: none;
+  stroke: #050504;
+  stroke-miterlimit: 10;
+  stroke-width: 3px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  transition: 0.5s all ease-in-out;
+}
+.about__slider .swiper-button-next-svg #after .line {
+  fill: none;
+  stroke: #050605;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 6px;
+  transition: 0.5s all ease-in-out;
+}
+
+.about__slider .swiper-button-prev-svg {
+  left: -7%;
+  right: auto;
+  position: absolute;
+  top: 150px;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  transition: 0.5s all ease-in-out;
+  z-index: 5;
+}
+.about__slider .swiper-button-prev-svg:hover #previous {
+  stroke: var(--orange);
+  transition: 0.5s all ease-in-out;
+}
+.about__slider .swiper-button-prev-svg:hover #previous .line {
+  stroke: var(--orange);
+  transition: 0.5s all ease-in-out;
+}
+.about__slider .swiper-button-prev-svg #previous {
+  fill: none;
+  stroke: #050504;
+  stroke-miterlimit: 10;
+  stroke-width: 3px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  transition: 0.5s all ease-in-out;
+}
+.about__slider .swiper-button-prev-svg #previous .line {
+  fill: none;
+  stroke: #050605;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 6px;
+  transition: 0.5s all ease-in-out;
 }
 
 .about__slider .swiper-slide_about {
