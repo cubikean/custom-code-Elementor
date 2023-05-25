@@ -1,7 +1,10 @@
 <?php
 /*
 Plugin Name: Video zoom
-Version: 1.0
+Version: 1.1
+Description: Onglets personnalisable avec animations | Images - Textes - Pictos |
+Author: Beekom
+Author URI: https://beekom.fr/
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
