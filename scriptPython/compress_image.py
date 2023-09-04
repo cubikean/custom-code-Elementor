@@ -17,7 +17,7 @@ def get_size_format(b, factor=1024, suffix="B"):
     
 
 
-def compress_img(image_name, new_size_ratio=0.9, quality=90, width=None, height=None, to_jpg=True):
+def compress_img(image_name, new_size_ratio=0.9, quality=90, width=None, height=None, to_jpg=False):
     # load the image to memory
     img = Image.open(image_name)
     # print the original image shape

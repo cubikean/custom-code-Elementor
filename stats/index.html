@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STATS - MC</title>
+  </head>
+  <body>
+    <canvas id="chartMc"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById("chartMc");
+
+      async function fetchData() {
+        const url =
+          "file:///C:/Users/Beekom/Desktop/dev/DEV/stats/02553085-a70c-4128-a143-0875048f7914.json";
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+      }
+      fetchData();
+
+      var jsonObj = JSON.parse(data);
+
+      function removeKeyWithSubstring(obj, substring) {
+        for (var key in obj) {
+          if (typeof obj[key] === "object") {
+            removeKeyWithSubstring(obj[key], substring);
+          } else if (key.includes(substring)) {
+            delete obj[key];
+          }
+        }
+      }
+
+      removeKeyWithSubstring(jsonObj, "minecraft");
+
+      var modifiedJsonStr = JSON.stringify(jsonObj, null, 2);
+      console.log(modifiedJsonStr);
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["piglin", "zombie", "skeleton"],
+          datasets: [
+            {
+              label: "Killed by",
+              data: [5, 1, 1],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
