@@ -12,8 +12,8 @@ def compress_video(input_path, output_path, target_bitrate):
     print("The video has been compressed successfully!")
 
 # Example usage
-input_path = "C:/Users/Beekom/Desktop/dev/DEV/scriptPython/videoInput/CDC.mp4"
-output_path = "C:/Users/Beekom/Desktop/dev/DEV/scriptPython/videoOutput/video.mp4"
+input_path = "C:/Users/Beekom/Desktop/dev/IAE/Pages_Site/Pages_Formations/video.mp4"
+output_path = "C:/Users/Beekom/Desktop/dev/IAE/Pages_Site/Pages_Formations/video_export.mp4"
 target_bitrate = "1000k"  # Target bitrate for compression in kbps
 
 compress_video(input_path, output_path, target_bitrate)

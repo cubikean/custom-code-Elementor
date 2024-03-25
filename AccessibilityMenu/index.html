@@ -1,0 +1,301 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibilité Menu</title>
+
+    <style>
+        /* Masquer tous les sous-menus par défaut */
+#main-menu ul ul {
+  display: none;
+}
+
+/* Afficher les sous-menus lorsque leur parent est en :focus */
+#main-menu ul li:focus > ul {
+  display: block;
+}
+
+/* Afficher les sous-menus lorsque leur parent est en :hover */
+#main-menu ul li:hover > ul {
+  display: block;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav id="main-menu" role="navigation">
+      <ul role="menubar">
+        <li role="menuitem"><a href="#">Accueil</a></li>
+        <li role="menuitem" aria-haspopup="true" aria-expanded="false">
+          <a href="#">Produits</a>
+          <ul role="menu" aria-label="Produits">
+            <li role="none"><a href="#">Produit 1</a></li>
+            <li role="none"><a href="#">Produit 2</a></li>
+            <li role="menuitem" aria-haspopup="true" aria-expanded="false">
+              <a href="#">Plus de produits</a>
+              <ul role="menu" aria-label="Plus de produits">
+                <li role="none"><a href="#">Produit 3</a></li>
+                <li role="none"><a href="#">Produit 4</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li role="menuitem" aria-haspopup="true" aria-expanded="false">
+          <a href="#">Services</a>
+          <ul role="menu" aria-label="Services">
+            <li role="none"><a href="#">Service 1</a></li>
+            <li role="none"><a href="#">Service 2</a></li>
+            <li role="menuitem" aria-haspopup="true" aria-expanded="false">
+              <a href="#">Plus de services</a>
+              <ul role="menu" aria-label="Plus de services">
+                <li role="none"><a href="#">Service 3</a></li>
+                <li role="none"><a href="#">Service 4</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li role="menuitem"><a href="#">À propos</a></li>
+        <li role="menuitem"><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const mainMenu = document.getElementById("main-menu");
+  const menuItems = mainMenu.querySelectorAll("li");
+
+  menuItems.forEach((item) => {
+    const subMenu = item.querySelector("ul");
+    if (subMenu) {
+      item.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleSubMenu(subMenu);
+        } else if (event.key === "ArrowDown") {
+          const nextItem = this.nextElementSibling;
+          if (nextItem) {
+            nextItem.querySelector("a").focus();
+          }
+        } else if (event.key === "ArrowUp") {
+          const prevItem = this.previousElementSibling;
+          if (prevItem) {
+            prevItem.querySelector("a").focus();
+          }
+        } else if (event.key === "ArrowRight") {
+          const subMenu = this.querySelector("ul");
+          if (subMenu) {
+            subMenu.firstElementChild.querySelector("a").focus();
+          }
+        } else if (event.key === "ArrowLeft") {
+          const parentItem = this.parentElement.parentElement.closest("li");
+          if (parentItem) {
+            parentItem.querySelector("a").focus();
+          }
+        }
+      });
+
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleSubMenu(subMenu);
+        event.stopPropagation(); // Empêcher la propagation de l'événement de clic sur les éléments principaux du menu
+      });
+
+      // Empêcher la propagation de l'événement de clic sur les éléments du sous-menu
+      subMenu.querySelectorAll("li").forEach((subMenuItem) => {
+        subMenuItem.addEventListener("click", function (event) {
+          event.stopPropagation();
+        });
+      });
+    }
+  });
+
+  function toggleSubMenu(subMenu) {
+    const expanded = subMenu.getAttribute("aria-expanded") === "true" || false;
+    subMenu.setAttribute("aria-expanded", !expanded);
+    if (!expanded) {
+      subMenu.style.display = "block";
+    } else {
+      subMenu.style.display = "none";
+    }
+  }
+});
+
+
+    </script>
+  </body>
+</html> -->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Accessible Mega Menu Example</title>
+<style>
+    /* Rudimentary mega menu CSS for demonstration */    
+
+    /* mega menu list */
+    .nav-menu {
+        display: block;
+        position: relative;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        z-index: 15;
+    }
+
+    /* a top level navigation item in the mega menu */
+    .nav-item {
+        list-style: none;
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* first descendant link within a top level navigation item */
+    .nav-item > a {
+        position: relative;
+        display: inline-block;
+        padding: 0.5em 1em;
+        margin: 0 0 -1px 0;
+        border: 1px solid transparent;
+    }
+
+    /* focus/open states of first descendant link within a top level 
+       navigation item */
+    .nav-item > a:focus,
+    .nav-item > a.open {
+        border: 1px solid #dedede;
+    }
+
+    /* open state of first descendant link within a top level 
+       navigation item */
+    .nav-item > a.open {
+        background-color: #fff;
+        border-bottom: none;
+        z-index: 1;
+    }
+
+    /* sub-navigation panel */
+    .sub-nav {
+        position: absolute;
+        display: none;
+        top: 2.2em;
+        margin-top: -1px;
+        padding: 0.5em 1em;
+        border: 1px solid #dedede;
+        background-color: #fff;
+    }
+
+    /* sub-navigation panel open state */
+    .sub-nav.open {
+        display: block;
+    }
+
+    /* list of items within sub-navigation panel */
+    .sub-nav ul {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 1em 0 0;
+        padding: 0;
+    }
+
+    /* list item within sub-navigation panel */
+    .sub-nav li {
+        display: block;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }     
+</style>
+</head>
+<body>
+<nav>
+    <ul class="nav-menu">
+        <li class="nav-item">
+            <a href="?movie">Movies</a>
+            <div class="sub-nav">
+                <ul class="sub-nav-group">
+                    <li><a href="?movie&genre=0">Action &amp; Adventure</a></li>
+                    <li><a href="?movie&genre=2">Children &amp; Family</a></li>
+                    <li>
+                      <ul class="sub-nav-group">
+                        <li><a href="?movie&genre=7">Dramas</a></li>
+                        <li><a href="?movie&genre=9">Foreign</a></li>
+                        <li>&#8230;</li>
+                    </ul>
+                    </li>
+                </ul>
+                <ul class="sub-nav-group">
+                    <li><a href="?movie&genre=7">Dramas</a></li>
+                    <li><a href="?movie&genre=9">Foreign</a></li>
+                    <li>&#8230;</li>
+                </ul>
+                <ul class="sub-nav-group">
+                    <li><a href="?movie&genre=14">Musicals</a></li>
+                    <li><a href="?movie&genre=15">Romance</a></li>
+                    <li>&#8230;</li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="?tv">TV Shows</a>
+            <div class="sub-nav">
+                <ul class="sub-nav-group">
+                    <li><a href="?tv&genre=20">Classic TV</a></li>
+                    <li><a href="?tv&genre=21">Crime TV</a></li>
+                    <li>&#8230;</li>
+                </ul>
+                <ul class="sub-nav-group">
+                    <li><a href="?tv&genre=27">Reality TV</a></li>
+                    <li><a href="?tv&genre=30">TV Action</a></li>
+                    <li>&#8230;</li>
+                </ul>
+                <ul class="sub-nav-group">
+                    <li><a href="?tv&genre=33">TV Dramas</a></li>
+                    <li><a href="?tv&genre=34">TV Horror</a></li>
+                    <li>&#8230;</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<!-- include jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- include the jquery-accessibleMegaMenu plugin script -->
+<script src="./js/accessibleMegaMenu.js"></script>
+
+<!-- initialize a selector as an accessibleMegaMenu -->
+<script>
+    $("nav:first").accessibleMegaMenu({
+        /* prefix for generated unique id attributes, which are required 
+           to indicate aria-owns, aria-controls and aria-labelledby */
+        uuidPrefix: "accessible-megamenu",
+        
+        /* css class used to define the megamenu styling */
+        menuClass: "nav-menu",
+        
+        /* css class for a top-level navigation item in the megamenu */
+        topNavItemClass: "nav-item",
+        
+        /* css class for a megamenu panel */
+        panelClass: "sub-nav",
+        
+        /* css class for a group of items within a megamenu panel */
+        panelGroupClass: "sub-nav-group",
+        
+        /* css class for the hover state */
+        hoverClass: "hover",
+        
+        /* css class for the focus state */
+        focusClass: "focus",
+        
+        /* css class for the open state */
+        openClass: "open"
+    });
+</script>
+</body>
+</html>

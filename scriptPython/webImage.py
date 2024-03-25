@@ -1,36 +1,88 @@
 import re
 import os
 import requests
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
 value = [
-    "9004/bio", "9008/saisons", "9010/2015", "9061/figaro-2", "11664/class-40",
-    "11687/figaro-3", "9007/les-partenaires", "9012/medias", "9016/photo",
-    "9017/videos", "9999/presse", "9025/contact",
+  "/Contact",
+  "/Master-of-Business-Administration",
+  "/Futur-etudiant",
+  "/Etudiant",
+  "/Ancien-etudiant",
+  "/Professionnel",
+  "/L-IAE-La-Rochelle",
+  "/Actualites",
+  "/Formations",
+  "/Recherche",
+  "/Vie-etudiante",
+  "/Formation-professionnelle-continue",
+  "/Certificat-Management-des-RH-a-l",
+  "/mae-e-learning",
+  "/Toutes-les-formations-en-formation",
+  "/Informations-pratiques",
+  "/L-IAE-La-Rochelle-en-bref",
+  "/Organisation",
+  "/Equipe-administrative-99",
+  "/Equipe-pedagogique-100",
+  "/Faculte-de-Droit-Science-Politique",
+  "/Certification",
+  "/Partenaires",
+  "/Annuaire-de-l-IAE-La-Rochelle",
+  "/Licence",
+  "/Classe-preparatoire-aux-grandes",
+  "/Masters-11",
+  "/Doctorat",
+  "/Echanges-internationaux",
+  "/L-alternance-a-l-IAE-La-Rochelle",
+  "/La-recherche-a-l-IAE-La-Rochelle",
+  "/equipes-recherche",
+  "/Reussir-ses-etudes-a-La-Rochelle",
+  "/Associations-etudiantes",
+  "/Sportifs-de-haut-niveau",
+  "/Projets-universitaires",
+  "/Profils",
+  "/Professionnel-61",
+  "/Mentions-legales",
+  "/Plan-de-site"
 ]
-
 for i in range(len(value)):
-    folder_name = value[i].split("/")[0]  # Obtenir le nom du dossier à partir du lien
-    site = "http://julienpulve.com/s/" + value[i]
+    link_path = value[i]
+    folder_name = link_path.strip("/").replace("/", "_")  # Utiliser le nom du lien comme nom de dossier
+    site = "https://iae.univ-larochelle.fr" + link_path
     response = requests.get(site)
     soup = BeautifulSoup(response.text, 'html.parser')
     image_tags = soup.find_all('img')
-    urls = [img['src'] for img in image_tags]
-    for url in urls:
-        filename = re.search(r'/([\w_-]+[.](jpg|gif|png|jpeg))$', url)
-        if not filename:
-            print("L'expression régulière ne correspond pas à l'URL : {}".format(url))
+    
+    for img in image_tags:
+        src = img.get('src', '')
+
+        # Extraire le chemin du fichier et les paramètres d'URL
+        parsed_url = urlparse(src)
+        path, params = parsed_url.path, parsed_url.params
+
+        # Utiliser une expression régulière pour extraire le nom du fichier
+        filename_match = re.search(r'/([\w_-]+[.](jpg|gif|png|jpeg))$', path)
+        if not filename_match:
+            print("L'expression régulière ne correspond pas à l'URL : {}".format(src))
             continue
-        filepath = os.path.join(os.getcwd(), folder_name, filename.group(1))  # Chemin vers le fichier incluant le dossier
 
-        full_url = urljoin(site, url)
+        filename = filename_match.group(1)
 
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)  # Créer le dossier s'il n'existe pas
+        # Si des paramètres d'URL existent, les ajouter au nom du fichier
+        if params:
+            filename += "?" + params
+
+        filepath = os.path.join(os.getcwd(), folder_name, filename)
+
+        full_url = urljoin(site, src)
+
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
         with open(filepath, 'wb') as f:
-            if 'http' not in url:
-                url = '{}{}'.format(site, url)
+            if 'http' not in src:
+                src = '{}{}'.format(site, src)
             response = requests.get(full_url)
             f.write(response.content)
-    print("Téléchargement terminé, les images téléchargées se trouvent dans le dossier correspondant !")
+
+print("Téléchargement terminé, les images téléchargées se trouvent dans les dossiers correspondants !")
