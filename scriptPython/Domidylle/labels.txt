@@ -1,0 +1,307 @@
+1 Identifiant agence
+2 Référence agence du
+3 Type d’annonce
+4 Type de bien
+5 CP
+6 Ville
+7 Pays
+8 Adresse
+9 Quartier / Proximité
+10 Activités commerciales
+11 Prix / Loyer / Prix de
+12 Loyer / mois murs
+13 Loyer CC
+14 Loyer HT
+15 Honoraires
+16 Surface (m2)
+17 Surface terrain (m2)
+18 NB de pièces
+19 NB de chambres
+20 Libellé
+21 Descriptif
+22 Date de disponibilité Date "14/04/2003" Format JJ/MM/AAAA
+23 Charges
+24 Etage
+25 NB d’étages
+26 Meublé
+27 Année de construction
+28 Refait à neuf
+29 NB de salles de bain
+30 NB de salles d’eau
+31 NB de WC
+32 WC séparés
+33 Type de chauffage
+34 Type de cuisine
+35 Orientation sud
+36 Orientation est
+37 Orientation ouest
+38 Orientation nord
+39 NB balcons
+40 SF Balcon
+41 Ascenseur
+42 Cave
+43 NB de parkings
+44 NB de boxes
+45 Digicode
+46 Interphone
+47 Gardien
+48 Terrasse
+49 Prix semaine
+50 Prix quinzaine
+51 Prix mois / Basse Saison
+52 Prix semaine
+53 Prix quinzaine
+54 Prix mois
+55 NB de personnes
+56 Type de résidence
+57 Situation
+58 NB de couverts
+59 NB de lits doubles
+60 NB de lits simples
+61 Alarme
+62 Câble TV
+63 Calme
+64 Climatisation
+65 Piscine
+66 Aménagement pour
+67 Animaux acceptés
+68 Cheminée
+69 Congélateur
+70 Four
+71 Lave-vaisselle
+72 Micro-ondes
+73 Placards
+74 Téléphone
+75 Proche lac
+76 Proche tennis
+77 Proche pistes de ski
+78 Vue dégagée
+79 Chiffre d’affaire
+80 Longueur façade (m)
+81 Duplex
+82 Publications
+83 Mandat en exclusivité
+84 Coup de cœur
+85 Photo 1
+86 Photo 2
+87 Photo 3
+88 Photo 4
+89 Photo 5
+90 Photo 6
+91 Photo 7
+92 Photo 8
+93 Photo 9
+94 Titre photo 1
+95 Titre photo 2
+96 Titre photo 3
+97 Titre photo 4
+98 Titre photo 5
+99 Titre photo 6
+100 Titre photo 7
+101 Titre photo 8
+102 Titre photo 9
+103 Photo panoramique
+104 URL visite virtuelle
+105 Téléphone à afficher
+106 Contact à afficher
+107 Email de contact
+108 CP Réel du bien
+109 Ville réelle du bien
+110 Inter-cabinet
+111 Inter-cabinet prive
+112 N° de mandat
+113 Date mandat Date "13/02/2003" Format : JJ/MM/AAAA
+114 Nom mandataire
+115 Prénom mandataire
+116 Raison sociale
+117 Adresse mandataire
+118 CP mandataire
+119 Ville mandataire
+120 Téléphone mandataire
+121 Commentaires
+122 Commentaires privés
+123 Code négociateur
+124 Code Langue 1
+125 Proximité Langue 1
+126 Libellé Langue 1
+127 Descriptif Langue 1
+128 Code Langue 2
+129 Proximité Langue 2
+130 Libellé Langue 2
+131 Descriptif Langue 2
+132 Code Langue 3
+133 Proximité Langue 3
+134 Libellé Langue 3
+135 Descriptif Langue 3
+136 Champ personnalisé 1 "" Les 25 champs suivants peuvent être utilisés pour
+137 Champ personnalisé 2 "" nous transmettre des informations qui ne font pas
+138 Champ personnalisé 3 "" partie des spécifications standards.
+139 Champ personnalisé 4 ""
+140 Champ personnalisé 5 ""
+141 Champ personnalisé 6 ""
+142 Champ personnalisé 7 ""
+143 Champ personnalisé 8 ""
+144 Champ personnalisé 9 ""
+145 Champ personnalisé 10 ""
+146 Champ personnalisé 11 ""
+147 Champ personnalisé 12 ""
+148 Champ personnalisé 13 ""
+149 Champ personnalisé 14 ""
+150 Champ personnalisé 15 ""
+151 Champ personnalisé 16 ""
+152 Champ personnalisé 17 ""
+153 Champ personnalisé 18 ""
+154 Champ personnalisé 19 ""
+155 Champ personnalisé 20 ""
+156 Champ personnalisé 21 ""
+157 Champ personnalisé 22 ""
+158 Champ personnalisé 23 ""
+159 Champ personnalisé 24 ""
+160 Champ personnalisé 25 ""
+161 Dépôt de garantie
+162 Récent
+163 Travaux à prévoir
+164 Photo 10
+165 Photo 11
+166 Photo 12
+167 Photo 13
+168 Photo 14
+169 Photo 15
+170 Photo 16
+171 Photo 17
+172 Photo 18
+173 Photo 19
+174 Photo 20
+175 Identifiant technique
+176 Consommation énergie
+177 Bilan consommation
+178 Emissions GES
+179 Bilan émission GES
+180 Identifiant quartier
+181 Sous type de bien
+182 Périodes de disponibilité
+183 Périodes basse saison
+184 Périodes haute saison
+185 Prix du bouquet
+186 Rente mensuelle
+187 Age de l’homme
+188 Age de la femme
+189 Entrée
+190 Résidence
+191 Parquet
+192 Vis-à-vis
+193 Transport : Ligne
+194 Transport : Station
+195 Durée bail
+196 Places en salle
+197 Monte-charge
+198 Quai
+199 Nombre de bureaux
+200 Prix du droit d’entrée
+201 Prix masqué
+202 Loyer annuel global
+203 Charges annuelles
+204 Loyer annuel au m2
+205 Charges annuelles au m2
+206 Charges mensuelles HT
+207 Loyer annuel CC
+208 Loyer annuel HT
+209 Charges annuelles HT
+210 Loyer annuel au m2 CC
+211 Loyer annuel au m2 HT
+212 Charges annuelles au m2
+213 Divisible
+214 Surface divisible
+215 Surface divisible
+216 Surface séjour
+217 Nombre de véhicules
+218 Prix du droit au bail
+219 Valeur à l’achat
+220 Répartition du chiffre
+221 Terrain agricole
+222 Equipement bébé
+223 Terrain constructible
+224 Résultat Année N-2
+225 Résultat Année N-1
+226 Résultat Actuel
+227 Immeuble de parkings
+228 Parking isolé
+229 Si Viager Vendu Libre
+230 Logement à disposition
+231 Terrain en pente
+232 Plan d’eau
+233 Lave-linge
+234 Sèche-linge
+235 Connexion internet
+236 Chiffre affaire Année N-2
+237 Chiffre affaire Année N-1
+238 Conditions financières
+239 Prestations diverses
+240 Longueur façade
+241 Montant du rapport
+242 Nature du bail
+243 Nature bail commercial
+244 Nombre terrasses
+245 Prix hors taxes
+246 Si Salle à manger
+247 Si Séjour
+248 Terrain donne sur la rue
+249 Immeuble de type
+250 Terrain viabilisé
+251 Equipement Vidéo
+252 Surface de la cave
+253 Surface de la salle à
+254 Situation commerciale
+255 Surface maximale d’un
+256 Honoraires charge Remplacé par le champ 302
+257 Pourcentage honoraires Remplacé par le champ 15
+258 En copropriété
+259 Nombre de lots
+260 Charges annuelles
+261 Syndicat des
+262 Détail procédure du
+263 Champ personnalisé 26 ""
+264 Photo 21
+265 Photo 22
+266 Photo 23
+267 Photo 24
+268 Photo 25
+269 Photo 26
+270 Photo 27
+271 Photo 28
+272 Photo 29
+273 Photo 30
+274 Titre photo 10
+275 Titre photo 11
+276 Titre photo 12
+277 Titre photo 13
+278 Titre photo 14
+279 Titre photo 15
+280 Titre photo 16
+281 Titre photo 17
+282 Titre photo 18
+283 Titre photo 19
+284 Titre photo 20
+285 Titre photo 21
+286 Titre photo 22
+287 Titre photo 23
+288 Titre photo 24
+289 Titre photo 25
+290 Titre photo 26
+291 Titre photo 27
+292 Titre photo 28
+293 Titre photo 29
+294 Titre photo 30
+295 Prix du terrain
+296 Prix du modèle de
+297 Nom de l'agence gérant
+298 Latitude
+299 Longitude
+300 Précision GPS
+301 Version Format
+302 Honoraires à la charge
+303 Prix hors honoraires
+304 Modalités charges
+305 Complément loyer
+306 Part honoraires
+307 URL du Barème des

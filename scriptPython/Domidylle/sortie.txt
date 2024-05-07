@@ -1,0 +1,307 @@
+ Identifiant agence
+ Référence agence du
+ Type d’annonce
+ Type de bien
+ CP
+ Ville
+ Pays
+ Adresse
+ Quartier / Proximité
+ Activités commerciales
+ Prix / Loyer / Prix de
+ Loyer / mois murs
+ Loyer CC
+ Loyer HT
+ Honoraires
+ Surface (m2)
+ Surface terrain (m2)
+ NB de pièces
+ NB de chambres
+ Libellé
+ Descriptif
+ Date de disponibilité Date "14/04/2003" Format JJ/MM/AAAA
+ Charges
+ Etage
+ NB d’étages
+ Meublé
+ Année de construction
+ Refait à neuf
+ NB de salles de bain
+ NB de salles d’eau
+ NB de WC
+ WC séparés
+ Type de chauffage
+ Type de cuisine
+ Orientation sud
+ Orientation est
+ Orientation ouest
+ Orientation nord
+ NB balcons
+ SF Balcon
+ Ascenseur
+ Cave
+ NB de parkings
+ NB de boxes
+ Digicode
+ Interphone
+ Gardien
+ Terrasse
+ Prix semaine
+ Prix quinzaine
+ Prix mois / Basse Saison
+ Prix semaine
+ Prix quinzaine
+ Prix mois
+ NB de personnes
+ Type de résidence
+ Situation
+ NB de couverts
+ NB de lits doubles
+ NB de lits simples
+ Alarme
+ Câble TV
+ Calme
+ Climatisation
+ Piscine
+ Aménagement pour
+ Animaux acceptés
+ Cheminée
+ Congélateur
+ Four
+ Lave-vaisselle
+ Micro-ondes
+ Placards
+ Téléphone
+ Proche lac
+ Proche tennis
+ Proche pistes de ski
+ Vue dégagée
+ Chiffre d’affaire
+ Longueur façade (m)
+ Duplex
+ Publications
+ Mandat en exclusivité
+ Coup de cœur
+ Photo 1
+ Photo 2
+ Photo 3
+ Photo 4
+ Photo 5
+ Photo 6
+ Photo 7
+ Photo 8
+ Photo 9
+ Titre photo 1
+ Titre photo 2
+ Titre photo 3
+ Titre photo 4
+ Titre photo 5
+ Titre photo 6
+ Titre photo 7
+ Titre photo 8
+ Titre photo 9
+ Photo panoramique
+ URL visite virtuelle
+ Téléphone à afficher
+ Contact à afficher
+ Email de contact
+ CP Réel du bien
+ Ville réelle du bien
+ Inter-cabinet
+ Inter-cabinet prive
+ N° de mandat
+ Date mandat Date "13/02/2003" Format : JJ/MM/AAAA
+ Nom mandataire
+ Prénom mandataire
+ Raison sociale
+ Adresse mandataire
+ CP mandataire
+ Ville mandataire
+ Téléphone mandataire
+ Commentaires
+ Commentaires privés
+ Code négociateur
+ Code Langue 1
+ Proximité Langue 1
+ Libellé Langue 1
+ Descriptif Langue 1
+ Code Langue 2
+ Proximité Langue 2
+ Libellé Langue 2
+ Descriptif Langue 2
+ Code Langue 3
+ Proximité Langue 3
+ Libellé Langue 3
+ Descriptif Langue 3
+ Champ personnalisé 1 "" Les 25 champs suivants peuvent être utilisés pour
+ Champ personnalisé 2 "" nous transmettre des informations qui ne font pas
+ Champ personnalisé 3 "" partie des spécifications standards.
+ Champ personnalisé 4 ""
+ Champ personnalisé 5 ""
+ Champ personnalisé 6 ""
+ Champ personnalisé 7 ""
+ Champ personnalisé 8 ""
+ Champ personnalisé 9 ""
+ Champ personnalisé 10 ""
+ Champ personnalisé 11 ""
+ Champ personnalisé 12 ""
+ Champ personnalisé 13 ""
+ Champ personnalisé 14 ""
+ Champ personnalisé 15 ""
+ Champ personnalisé 16 ""
+ Champ personnalisé 17 ""
+ Champ personnalisé 18 ""
+ Champ personnalisé 19 ""
+ Champ personnalisé 20 ""
+ Champ personnalisé 21 ""
+ Champ personnalisé 22 ""
+ Champ personnalisé 23 ""
+ Champ personnalisé 24 ""
+ Champ personnalisé 25 ""
+ Dépôt de garantie
+ Récent
+ Travaux à prévoir
+ Photo 10
+ Photo 11
+ Photo 12
+ Photo 13
+ Photo 14
+ Photo 15
+ Photo 16
+ Photo 17
+ Photo 18
+ Photo 19
+ Photo 20
+ Identifiant technique
+ Consommation énergie
+ Bilan consommation
+ Emissions GES
+ Bilan émission GES
+ Identifiant quartier
+ Sous type de bien
+ Périodes de disponibilité
+ Périodes basse saison
+ Périodes haute saison
+ Prix du bouquet
+ Rente mensuelle
+ Age de l’homme
+ Age de la femme
+ Entrée
+ Résidence
+ Parquet
+ Vis-à-vis
+ Transport : Ligne
+ Transport : Station
+ Durée bail
+ Places en salle
+ Monte-charge
+ Quai
+ Nombre de bureaux
+ Prix du droit d’entrée
+ Prix masqué
+ Loyer annuel global
+ Charges annuelles
+ Loyer annuel au m2
+ Charges annuelles au m2
+ Charges mensuelles HT
+ Loyer annuel CC
+ Loyer annuel HT
+ Charges annuelles HT
+ Loyer annuel au m2 CC
+ Loyer annuel au m2 HT
+ Charges annuelles au m2
+ Divisible
+ Surface divisible
+ Surface divisible
+ Surface séjour
+ Nombre de véhicules
+ Prix du droit au bail
+ Valeur à l’achat
+ Répartition du chiffre
+ Terrain agricole
+ Equipement bébé
+ Terrain constructible
+ Résultat Année N-2
+ Résultat Année N-1
+ Résultat Actuel
+ Immeuble de parkings
+ Parking isolé
+ Si Viager Vendu Libre
+ Logement à disposition
+ Terrain en pente
+ Plan d’eau
+ Lave-linge
+ Sèche-linge
+ Connexion internet
+ Chiffre affaire Année N-2
+ Chiffre affaire Année N-1
+ Conditions financières
+ Prestations diverses
+ Longueur façade
+ Montant du rapport
+ Nature du bail
+ Nature bail commercial
+ Nombre terrasses
+ Prix hors taxes
+ Si Salle à manger
+ Si Séjour
+ Terrain donne sur la rue
+ Immeuble de type
+ Terrain viabilisé
+ Equipement Vidéo
+ Surface de la cave
+ Surface de la salle à
+ Situation commerciale
+ Surface maximale d’un
+ Honoraires charge Remplacé par le champ 302
+ Pourcentage honoraires Remplacé par le champ 15
+ En copropriété
+ Nombre de lots
+ Charges annuelles
+ Syndicat des
+ Détail procédure du
+ Champ personnalisé 26 ""
+ Photo 21
+ Photo 22
+ Photo 23
+ Photo 24
+ Photo 25
+ Photo 26
+ Photo 27
+ Photo 28
+ Photo 29
+ Photo 30
+ Titre photo 10
+ Titre photo 11
+ Titre photo 12
+ Titre photo 13
+ Titre photo 14
+ Titre photo 15
+ Titre photo 16
+ Titre photo 17
+ Titre photo 18
+ Titre photo 19
+ Titre photo 20
+ Titre photo 21
+ Titre photo 22
+ Titre photo 23
+ Titre photo 24
+ Titre photo 25
+ Titre photo 26
+ Titre photo 27
+ Titre photo 28
+ Titre photo 29
+ Titre photo 30
+ Prix du terrain
+ Prix du modèle de
+ Nom de l'agence gérant
+ Latitude
+ Longitude
+ Précision GPS
+ Version Format
+ Honoraires à la charge
+ Prix hors honoraires
+ Modalités charges
+ Complément loyer
+ Part honoraires
+ URL du Barème des

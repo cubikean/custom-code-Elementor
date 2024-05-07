@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cards scroll</title>
+
+    <style>
+        .space{
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .main{
+            display: flex;
+            max-width: 1200px;
+            min-height: 400vh;
+            margin-inline: auto;
+            gap: 100px;
+
+            .sticky-text-oxonis{
+                max-width: 300px;
+            }
+            .sticky-element-oxonis{
+                background-color: gray;
+                padding: 50px;
+                display: flex;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="space">SCROLL</div>
+    <div class="main">
+        <div class="sticky-text-oxonis">
+          <h2 class="elementor-heading-title elementor-size-default">
+            Pourquoi choisir les cuisines Oxonis
+          </h2>
+          <p>
+            Notre entreprise de menuiserie, France Menuisiers, est implantée à La
+            Rochelle, Saintes, Rochefort, Angoulême, Bordeaux, Nantes, Niort, Tours,
+            Orléans, Limoges et Meaux près de Paris.
+          </p>
+        </div>
+      
+        <div class="cards-container">
+          <div class="sticky-element-oxonis">
+              <div class="image">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    width="81"
+                    height="80"
+                    src="https://atlantic-inox.beekom.fr/wp-content/uploads/2024/04/crayon-1.png"
+                    alt=""
+                  />
+                </div>
+            
+                <div class="title">
+                  <h3>Moderne Design</h3>
+                </div>
+            
+                <div class="text">
+                  <p>
+                    Elle n’a rien a envier à son homologue indoor, grâce à son style épurée
+                    et élégant. Une étude 3D pour visualiser votre projet.
+                  </p>
+                </div>
+          </div>
+          <div class="sticky-element-oxonis">
+              <div class="image">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    width="81"
+                    height="80"
+                    src="https://atlantic-inox.beekom.fr/wp-content/uploads/2024/04/crayon-1.png"
+                    alt=""
+                  />
+                </div>
+            
+                <div class="title">
+                  <h3>Moderne Design</h3>
+                </div>
+            
+                <div class="text">
+                  <p>
+                    Elle n’a rien a envier à son homologue indoor, grâce à son style épurée
+                    et élégant. Une étude 3D pour visualiser votre projet.
+                  </p>
+                </div>
+          </div>
+          <div class="sticky-element-oxonis">
+              <div class="image">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    width="81"
+                    height="80"
+                    src="https://atlantic-inox.beekom.fr/wp-content/uploads/2024/04/crayon-1.png"
+                    alt=""
+                  />
+                </div>
+            
+                <div class="title">
+                  <h3>Moderne Design</h3>
+                </div>
+            
+                <div class="text">
+                  <p>
+                    Elle n’a rien a envier à son homologue indoor, grâce à son style épurée
+                    et élégant. Une étude 3D pour visualiser votre projet.
+                  </p>
+                </div>
+          </div>
+          <div class="sticky-element-oxonis">
+              <div class="image">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    width="81"
+                    height="80"
+                    src="https://atlantic-inox.beekom.fr/wp-content/uploads/2024/04/crayon-1.png"
+                    alt=""
+                  />
+                </div>
+            
+                <div class="title">
+                  <h3>Moderne Design</h3>
+                </div>
+            
+                <div class="text">
+                  <p>
+                    Elle n’a rien a envier à son homologue indoor, grâce à son style épurée
+                    et élégant. Une étude 3D pour visualiser votre projet.
+                  </p>
+                </div>
+          </div>
+         
+        </div>
+      </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+      <script>
+        document.fonts.ready.then(function(){
+
+const recalculatePositions = () => {
+  const cards = gsap.utils.toArray(".sticky-element-oxonis");
+  const heightText = document.querySelector('.sticky-text-oxonis').clientHeight;
+  const spacer = 20;
+  let values = 150;
+  let valueEnd = cards[0].clientHeight;
+
+  cards.forEach((card, index) => {
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: () => `top center`,
+        end: () => `top top+=40`,
+        scrub: true,
+        invalidateOnRefresh: true
+      },
+      ease: "ease",
+      scale: () => 1 - (cards.length - index) * 0.025
+    });
+
+    if(window.innerWidth <= 768){
+      ScrollTrigger.create({
+        trigger: card,
+        start: `top-=${index * spacer} ${120+heightText}`,
+        endTrigger: ".cards-container",
+        end: `bottom top+=${values + cards[0].clientHeight}`,
+        pin: true,
+        pinSpacing: false,
+        // markers: true,
+        id: "card-pin",
+        invalidateOnRefresh: true,
+      });
+    } else {
+      ScrollTrigger.create({
+        trigger: card,
+        start: `top-=${index * spacer} top+=${values}`,
+        endTrigger: ".cards-container",
+        end: `bottom top+=${values + cards[0].clientHeight}`,
+        pin: true,
+        pinSpacing: false,
+        id: "card-pin",
+        invalidateOnRefresh: true,
+      });
+    }
+  });
+
+  if(window.innerWidth <= 768){
+    ScrollTrigger.create({
+      trigger: ".sticky-text-oxonis",
+      start: "top 80",
+      endTrigger: ".cards-container",
+      end : `bottom top+=${values + valueEnd}`,
+      pin: true,
+      id:'text-section',
+      // markers: true,
+    });
+  } else {
+    ScrollTrigger.create({
+      trigger: ".sticky-text-oxonis",
+      start: "top 350",
+      end : 'bottom bottom-=280',
+      pin: true,
+    });
+  }
+};
+setTimeout(() => {
+  recalculatePositions()
+}, 100);
+
+
+})
+      </script>
+</body>
+</html>
