@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Animation</title>
+<style>
+  path {
+    stroke-dasharray: 0; /* Valeur initiale, sera définie par JavaScript */
+    stroke-dashoffset: 0; /* Valeur initiale, sera définie par JavaScript */
+    transition: stroke-dashoffset 1.2s ease;
+  }
+  .space{
+    min-height: 200vh;
+  }
+</style>
+</head>
+<body>
+<svg width="693" height="453" viewBox="0 0 693 453" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M309.104 451.934C323.039 411.677 336.498 369.007 361.155 333.805C393.523 287.591 438.627 252.3 492.048 234.014C509.028 228.201 528.031 222.283 546.119 221.299C552.382 220.959 560.173 223.039 563.377 229.049C576.317 253.323 494.85 281.886 484.471 286.102C454.366 298.328 417.558 311.882 384.924 299.841C361.589 291.231 354.854 272.991 362.833 249.819C379.838 200.434 425.177 158.191 460.329 121.797C511.129 69.2016 563.397 17.0718 620.121 -29.16C641.382 -46.4884 663.687 -62.0308 685.602 -78.4239C695.835 -86.0784 692.229 -83.0768 684.768 -77.1115C672.465 -67.2737 658.141 -59.6864 644.699 -51.5833C577.496 -11.0712 509.918 29.417 438.735 62.607C356.126 101.125 271.62 134.69 183.859 159.547C132.727 174.029 73.275 189.598 19.6266 182.233C2.00901 179.815 -18.8456 170.038 -33.2098 159.404C-41.5127 153.258 -38.7792 151.804 -31.7503 146.293" stroke="#FF7575" stroke-width="2" stroke-linecap="round"/>
+  <!-- Ajoutez plus de chemins ici si nécessaire -->
+</svg>
+
+<div class="space"></div>
+<svg width="693" height="453" viewBox="0 0 693 453" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M309.104 451.934C323.039 411.677 336.498 369.007 361.155 333.805C393.523 287.591 438.627 252.3 492.048 234.014C509.028 228.201 528.031 222.283 546.119 221.299C552.382 220.959 560.173 223.039 563.377 229.049C576.317 253.323 494.85 281.886 484.471 286.102C454.366 298.328 417.558 311.882 384.924 299.841C361.589 291.231 354.854 272.991 362.833 249.819C379.838 200.434 425.177 158.191 460.329 121.797C511.129 69.2016 563.397 17.0718 620.121 -29.16C641.382 -46.4884 663.687 -62.0308 685.602 -78.4239C695.835 -86.0784 692.229 -83.0768 684.768 -77.1115C672.465 -67.2737 658.141 -59.6864 644.699 -51.5833C577.496 -11.0712 509.918 29.417 438.735 62.607C356.126 101.125 271.62 134.69 183.859 159.547C132.727 174.029 73.275 189.598 19.6266 182.233C2.00901 179.815 -18.8456 170.038 -33.2098 159.404C-41.5127 153.258 -38.7792 151.804 -31.7503 146.293" stroke="#FF7575" stroke-width="2" stroke-linecap="round"/>
+    <!-- Ajoutez plus de chemins ici si nécessaire -->
+  </svg>
+
+<div class="space"></div>
+<svg width="693" height="453" viewBox="0 0 693 453" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M309.104 451.934C323.039 411.677 336.498 369.007 361.155 333.805C393.523 287.591 438.627 252.3 492.048 234.014C509.028 228.201 528.031 222.283 546.119 221.299C552.382 220.959 560.173 223.039 563.377 229.049C576.317 253.323 494.85 281.886 484.471 286.102C454.366 298.328 417.558 311.882 384.924 299.841C361.589 291.231 354.854 272.991 362.833 249.819C379.838 200.434 425.177 158.191 460.329 121.797C511.129 69.2016 563.397 17.0718 620.121 -29.16C641.382 -46.4884 663.687 -62.0308 685.602 -78.4239C695.835 -86.0784 692.229 -83.0768 684.768 -77.1115C672.465 -67.2737 658.141 -59.6864 644.699 -51.5833C577.496 -11.0712 509.918 29.417 438.735 62.607C356.126 101.125 271.62 134.69 183.859 159.547C132.727 174.029 73.275 189.598 19.6266 182.233C2.00901 179.815 -18.8456 170.038 -33.2098 159.404C-41.5127 153.258 -38.7792 151.804 -31.7503 146.293" stroke="#FF7575" stroke-width="2" stroke-linecap="round"/>
+    <!-- Ajoutez plus de chemins ici si nécessaire -->
+  </svg>
+
+<script>
+    
+  document.addEventListener("DOMContentLoaded", function() {
+    var paths = document.querySelectorAll('path');
+
+    paths.forEach(function(path, index) {
+      var length = path.getTotalLength();
+
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
+
+      var styleSheet = document.styleSheets[0];
+      var keyframesName = `draw${index}`;
+      var keyframes = `
+        @keyframes ${keyframesName} {
+          to {
+            stroke-dashoffset: ${2*length};
+          }
+        }
+      `;
+      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+      // Utiliser IntersectionObserver pour détecter quand le path est visible
+      var observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            console.log(entry)
+          if (entry.isIntersecting) {
+            path.style.animation = `${keyframesName} 1.2s ease forwards`;
+            observer.unobserve(path); // On arrête d'observer une fois que l'animation est déclenchée
+          }
+        });
+      }, { threshold: .7 }); // L'animation se déclenche quand au moins 10% du path est visible
+
+      observer.observe(path);
+    });
+  });
+</script>
+</body>
+</html>
