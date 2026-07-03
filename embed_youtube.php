@@ -3,8 +3,8 @@
 
 
 // API config 
-$API_Key    = 'AIzaSyCJQOUp0LBSGIiw3RN5kotYiZW5PH23rSU'; 
-$Channel_ID = 'UCeeKrGQ8TBgE3Vb3UmcPeRg'; 
+$API_Key    = 'key'; 
+$Channel_ID = 'idchannel'; 
 $Max_Results = 10; 
  
 // Get videos from channel by YouTube Data API 
